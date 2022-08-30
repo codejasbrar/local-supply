@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="v10-three-column-tile-wrapper clearfix" {{block.shopify_attributes}}>
+    {% if block.settings.heading != blank %}
+      <h3>{{ block.settings.heading }}</h3>
+    {% endif %}
+    <div class="wrap">
+      <div class="tile">
+        <div class="image">
+          <img src="{{ block.settings.tileImage1 | img_url:'346x' }}"/>
+          <a href="{{ block.settings.tileLinkUrl1 }}" class="overlay-el"></a>
+        </div>
+        <h2 class="title">
+          <a href="{{ block.settings.tileLinkUrl1 }}">{{ block.settings.tileText1 }} <i class="licon icon-e-31"></i></a>
+        </h2>
+      </div>
+      <div class="tile">
+        <div class="image">
+          <img src="{{ block.settings.tileImage2 | img_url:'346x' }}"/>
+          <a href="{{ block.settings.tileLinkUrl2 }}" class="overlay-el"></a>
+        </div>
+        <h2 class="title">
+          <a href="{{ block.settings.tileLinkUrl2 }}">{{ block.settings.tileText2 }} <i class="licon icon-e-31"></i></a>
+        </h2>
+      </div>
+      <div class="tile">
+        <div class="image">
+          <img src="{{ block.settings.tileImage3 | img_url:'346x' }}"/>
+          <a href="{{ block.settings.tileLinkUrl3 }}" class="overlay-el"></a>
+        </div>
+        <h2 class="title">
+          <a href="{{ block.settings.tileLinkUrl3 }}">{{ block.settings.tileText3 }} <i class="licon icon-e-31"></i></a>
+        </h2>
+      </div>
+
+    </div>
+  </div>
+</div>

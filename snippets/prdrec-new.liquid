@@ -1,0 +1,271 @@
+{% assign current = product.id %}
+{%- for block in section.blocks -%}
+{%- if block.type == 'related_products_type2' -%}
+{% assign number_of_related_products_per_row = 3 %}
+{% assign number_of_rows = 1 %}
+{% assign same_vendor = false %}
+{% assign same_type = false %}
+{% assign exclusions = 'frontpage,all' | split: ',' %}
+{% if product.metafields.c_f['Related Products'] %}
+  {% assign collection = collections[product.metafields.c_f['Related Products']] %}
+{% endif %}
+{% assign found_a_collection = false %}
+{% if collection and collection.all_products_count > 1 %}
+  {% unless exclusions contains collection.handle %}
+    {% assign found_a_collection = true %}
+  {% endunless %}
+{% endif %}
+{% unless found_a_collection %}
+  {% for c in product.collections %}
+    {% unless exclusions contains c.handle or c.all_products_count < 2 %}
+      {% assign found_a_collection = true %}
+      {% assign collection = c %}
+      {% break %}
+    {% endunless %}
+  {% endfor %}
+{% endunless %}
+<div class="cooolBox">
+  {% if found_a_collection %}
+  <div class="tt-block-title">
+    <h2 class="tt-title pb-3">
+      {{ block.settings.title }}
+    </h2>
+  </div>
+  {% assign counter = 0 %}
+  {% assign break_at = block.settings.product_upsell_collection_count | times: 1 %}
+  {% assign current_product = product %}
+  {% assign colName = collection.id %}
+  <div id="v10-product-guaranteeTop" style="">
+    <div class="container">
+      <div class="glide" id="intro2_{{ colName }}">
+  		<div data-glide-el="track" class="glide__track">
+          <ul class="glide__slides">
+            {% for product in collection.products %}
+            {% unless product.id == current %}
+            {% if forloop.index0 > break_at %}
+            {% else %}
+            <li class="glide__slide">
+              <a href="{{ product.url }}">
+                <div class="grid ligp">
+                  {% include 'home-product-grid-item' %}
+                </div>
+              </a>
+            </li>
+            {% endif %}
+            {% endunless %}
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="glide__arrows" data-glide-el="controls">
+          <button class="glide__arrow glide__arrow--left" data-glide-dir="&lt;"><i class="icon-e-14" aria-hidden="true"></i></button>
+          <button class="glide__arrow glide__arrow--right" data-glide-dir="&gt;"><i class="icon-e-15" aria-hidden="true"></i></button>
+    	</div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+<div class="clearfix"></div>
+  
+<style>
+  
+.grid.ligp h5 {
+    color: black;
+    font-size: 34px;
+    text-align: center;
+    margin: 0px;
+}
+  
+.grid.ligp p {
+    color: #000;
+    font-size: 19px;
+    text-align: center;
+}
+  .grid.ligp {
+    text-align: center;
+}
+  
+.cooolBox  .grid.ligp {
+    text-align: center;
+    width: 100%;
+    margin: 0px auto;
+}
+
+.cooolBox {
+    padding: 40px 0px;
+}
+
+.glide__arrow {
+    position: absolute;
+    display: block;
+    top: 50%;
+    z-index: 2;
+    color: #050101;
+	}
+	
+.glide__arrow {
+    position: absolute;
+    display: block;
+    top: 50%;
+    z-index: 2;
+    color: #050101;
+    font-weight: 700;
+    font-size: 28px;
+    box-shadow: unset;
+}
+
+.claRview {
+    float: left;
+    width: 100%;
+}
+
+i.fa.fa-star {
+    font-size: 21px;
+    padding: 5px;
+	color:#EA7B7B;
+}
+.grid.ligp h5 {
+    color: black;
+    font-size: 23px;
+    text-align: center;
+    margin: 0px;
+    padding-top: 20px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.cooolBox .glide__arrow--left {
+    left: -2%;
+}
+
+
+.cooolBox .glide__arrow--right {
+    right: -2%;
+}
+
+.cooolBox {
+    padding: 40px 20px;
+    padding-bottom: 0px;
+}
+
+.glide__arrow {
+ 
+    border: 0px solid rgba(255,255,255,0.5)
+}
+
+.grid.ligp img {
+    padding: 0px !important;
+}
+
+
+  
+.cooolBox .product-title {
+    padding-top: 10px;
+}
+  
+  span.price .money {
+    font-size: 17px;
+    font-weight: 600;
+    padding-top: 8px;
+    color: #000;
+}
+
+  .cooolBox figcaption {
+    text-align: center;
+    padding-top: 10px;
+}
+  
+ .cooolBox  .product-title a {
+    color: #000;
+    text-decoration: none;
+    font-size: 19px;
+}
+  
+  ul.glide__slides .glide__slide {
+    padding: 0px 30px;
+}
+  
+  button.glide__arrow i {
+    font-size: 40px;
+}
+  .cooolBox {
+    float: left;
+    width: 100%;
+}
+  
+ div#v10-product-guaranteeTop .tt-product span.tt-img {
+    height: auto !important;
+}
+  
+  div#shopify-section-footer-template {
+    float: left;
+    width: 100%;
+}
+  
+  div#shopify-section-1587487398637 {
+    float: left;
+    width: 100%;
+}
+  
+  
+  
+  
+@media only screen and (max-width: 767px) {
+  .glide__arrow--left {
+    left: -10% !important;
+}
+
+
+.glide__arrow--right {
+    right: -10% !important;
+}
+
+  .grid.ligp {
+    text-align: center;
+    width: 80%;
+    margin: 0px auto;
+}
+  
+  .product-parent .tt-description .tt-product-inside-hover {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: unset;
+    width: 100%;
+}
+  
+  .glide__arrow {
+  
+    top: 20%;
+  
+}
+
+}
+@media (min-width: 801px) {
+  #intro2_{{ colName }} .glide__arrow {
+    display: none;
+  }
+}
+
+</style>
+<script>
+var glide = new Glide('#intro2_{{ colName }}', {
+  type: 'carousel',
+  scrollLock: true,
+  perView: 3,
+  arrows: false,
+  breakpoints: {
+    800: {
+      perView: 2,
+      arrows: true
+    },
+    480: {
+      perView: 1,
+      arrows: true
+    }
+  }
+})
+
+glide.mount()
+</script>
+{%- endif -%}
+{%- endfor -%}

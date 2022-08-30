@@ -1,0 +1,33 @@
+<style>
+  /* temporary update, please change it once you have time working on it */
+  #temp-separator{
+  	display: block;
+    width: 100%;
+    height: 60px;
+  }
+  @media screen and (max-width: 767px){
+    #temp-separator{
+      height: 10px;
+    }
+  }
+</style>
+<div id="temp-separator" class="clearfix"></div>
+<div class="container-fluid">
+  <div class="v10-column-tile-wrapper clearfix" {{block.shopify_attributes}}>
+    <div class="tile">
+      <div class="image">
+        <img src="{{ block.settings.tileImage1 | img_url:'679x' }}"/>
+        <a href="{{ block.settings.tileLinkUrl1 }}" class="overlay-el"></a>
+      </div>
+      <h2 class="title"><a href="{{ block.settings.tileLinkUrl1 }}">{{ block.settings.tileText1 }} <i class="licon icon-arrow_right"></i></a></h2>
+    </div>
+    <div class="tile" {{block.shopify_attributes}}>
+      <div class="image">
+        <img src="{{ block.settings.tileImage2 | img_url:'679x' }}"/>
+        <a href="{{ block.settings.tileLinkUrl2 }}" class="overlay-el"></a>
+      </div>
+      <h2 class="title"><a href="{{ block.settings.tileLinkUrl2 }}">{{ block.settings.tileText2 }} <i class="licon icon-arrow_right"></i></a></h2>
+    </div>
+  </div>
+</div>
+

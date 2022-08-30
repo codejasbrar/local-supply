@@ -1,0 +1,99 @@
+<div class="hyperbeastslider">
+
+   {% for block in section.blocks %}
+  {% if block.type == 'Quotaion' %}
+  <div class="cus_main">
+
+  <div class="cus_text"><span>“</span>{{ block.settings.quotation_id }}<span>”</span></div>
+  <div class="sec_cus cus_text img_cus img-{{forloop.index}}"></div>
+ <style>
+   .img-{{forloop.index}}{
+     background-image:url('{{ block.settings.image_logo | img_url: 'master' }}');
+	height: 38px;
+    width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    justify-content: center;
+    background-position: center;
+   } 
+   
+ .cus_text {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 400;
+    color: #000;
+    padding-bottom: 20px;
+}
+   
+  </style>
+<!-- <div class="sec_cus img_cus"><img src="{{ section.settings.image_logo | img_url: 'master' }}" class="img_cus_snd" /></div> -->
+    </div>
+
+  {% endif %}
+  {% endfor %}
+
+</div>
+
+
+
+
+
+ <script type="text/javascript">
+ $(document).ready(function() {
+ $('.hyperbeastslider').slick({
+ dots: false,
+ infinite: true,
+ speed: 500,
+ slidesToShow: 1,
+ slidesToScroll: 1,
+ autoplay: true,
+ autoplaySpeed: 2000,
+   fade: true,
+ arrows: false,
+ variableWidth: false
+ });
+ });
+ </script>
+
+
+
+{% schema %}
+  {
+	"name" : "Quotation with Logo",
+		
+	"blocks": [
+	{
+		"type" : "Quotaion",
+		"name" : "New Quotation",
+
+		"settings" : [
+			{
+				"id": "image_logo",
+				"type": "image_picker",
+				"label": "Logo"
+			},
+			{
+                "id": "quotation_id",
+                "type": "textarea",
+                "label": "Quotation"
+            }
+			
+		 ]
+		}
+	],
+
+
+ "presets": [
+    {
+      "name": "Add Quotations",
+      "category": "Custom Section Quotation"
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

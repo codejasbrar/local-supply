@@ -1,0 +1,4 @@
+{% layout none %}
+{%- for item in cart.items -%}
+{{- item.id -}}:{{- item.quantity -}}{%- unless forloop.last == true -%},{%- endunless -%}
+{%- endfor -%}

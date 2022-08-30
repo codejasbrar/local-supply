@@ -1,0 +1,64 @@
+<div class="product-accordion-wrapper">
+  <div class="accordion-section close">
+    <h4>Product Features <span>+</span></h4>
+    <div class="content product-features">
+      {% if product.metafields.custom_fields["product_features_colelction"] != blank %}
+      	{% assign separator = "|###|" %}
+        {% assign icon_array = product.metafields.custom_fields["icon"] | split: separator %}
+        {% assign label_array = product.metafields.custom_fields["label"] | split: separator %}
+        {% assign fc_keys = product.metafields.custom_fields["product_features_colelction"] | split: "," %}
+        {% for i in fc_keys %}
+          {% assign index = i | plus: 0 %}
+      	  <p>{% if icon_array[index] != blank %}
+        	<span class="icon">{{ icon_array[index] }}</span>{% endif %}{{ label_array[index] }}</p>
+        {% endfor %}
+      {% else %}
+      	{% for i in (1..5) %}
+        {% assign icon = i | prepend: 'icon_' %}
+        {% assign label = i | prepend: 'label_' %}
+        {% if product.metafields.custom_fields[label] != blank %}
+        <p>{% if product.metafields.custom_fields[icon] != blank %}
+          <span class="icon">{{product.metafields.custom_fields[icon]}}</span>{% else %}<span class="icon">-</span>{% endif %}{{product.metafields.custom_fields[label]}}</p>
+        {% endif %}
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+  <div class="accordion-section close">
+    <h4>{{ settings.v9_global_accordion_title }} <span>+</span></h4>
+    <div class="content"><p>{{ settings.v9_global_accordion_content }}</p></div>
+  </div>
+  <div class="accordion-section">
+    <h4>Customer Reviews <span>-</span></h4>
+    <div class="content">
+      <div id="acc-product-reviews"></div>
+      <a href="#" class="acc-more-review">More Reviews</a>
+    </div>
+  </div>
+</div>
+<script>
+  $('.accordion-section h4').on('click', function(){
+    var $parent = $(this).parent();
+  	$parent.toggleClass('close');
+    if($parent.hasClass('close')){
+      $(this).find('span').html('+');
+    } else {
+      $(this).find('span').html('-');
+    }
+  });
+  $(document).ajaxStop(function() {
+  	if($('.spr-reviews .spr-review').length > 0){
+      $('#acc-product-reviews').html('');
+      $('.spr-reviews .spr-review').each(function(i, el){
+        if(i < 3){
+          var $review = $(el).clone();
+          $('#acc-product-reviews').append($review);
+        }
+      });
+    }
+  });
+  $('.acc-more-review').on('click', function(e){
+    $('.spr-summary-actions-togglereviews').trigger('click');
+    $.featherlight('#shopify-product-reviews');
+  });
+</script>

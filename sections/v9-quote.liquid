@@ -1,0 +1,54 @@
+
+{% assign number_of_blocks = section.blocks | size %}
+
+{% if number_of_blocks > 0 %}
+
+<div class="v9-quote-wrapper">
+  <div class="container-small">
+    <div class="v9-quote-slides-container">
+      <div class="v9-quote-nav-slide">
+        {% for block in section.blocks %}
+          {% include 'v9-quote-nav' %}
+        {% endfor %}
+      </div>
+      <div class="v9-quote-slides">
+        {% for block in section.blocks %}
+          {% include 'v9-quote-slide' %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Quote",
+	"max_blocks": 3,
+    "settings": [],
+	"blocks": [
+      {
+        "type": "quote",
+        "name": "Quote",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id":	"logo",
+            "label": "Logo"
+          },
+          {
+            "type": "textarea",
+            "id":	"quote",
+            "label": "Quote"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

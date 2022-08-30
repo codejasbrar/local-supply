@@ -1,0 +1,22 @@
+{% for block in section.blocks %}
+  <div class="block" {{ block.shopify_attributes }}>
+    {% case block.type %}
+    {% when 'looping-video-background' %}
+      {% include 'snippet_looping-video-background' %}
+    {% when 'two-column-tile'%}
+      {% include 'snippet_two-column-tile' %}
+    {% when 'text-block'%}
+      {% include 'snippet_text-block' %}
+    {% when 'three-column-tile' %}
+      {% include 'snippet_three-column-tile' %}
+    {% when 'three-column-card' %}
+      {% include 'snippet_three-column-card' %}
+    {% when 'quote' %}
+      {% include 'snippet_quote' %}
+    {% when 'featured-news' %}
+      {% include 'snippet_featured-news' %}
+    {% when 'image-text' %}
+      {% include 'snippet_image-text' %}
+    {% endcase %}
+  </div>
+{% endfor %}

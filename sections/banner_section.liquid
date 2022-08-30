@@ -1,0 +1,137 @@
+<section id="banner_section">
+  <div class="container-fluid">
+    {% for block in section.blocks %}
+    <div class="row">
+      <div class="col-md-6 p-0 left-image">
+        {% if block.settings.image_url != blank %}<a href="{{ block.settings.image_url }}">{% endif %}
+          <div class="left_image_inner">
+            <img class="lazyload desktop_only" src="{{ block.settings.image | img_url: 'master' }}">
+            <img class="lazyload mobile_only" src="{% if block.settings.image_mobile != blank %}
+              {{ block.settings.image_mobile | img_url: 'master' }}
+              {% else %}
+              {{ block.settings.image | img_url: 'master' }}
+              {% endif %}
+              ">
+            <div class="image_content">
+              <div class="left_image_content image_content_first">
+                {{ block.settings.image_content_1 }}
+              </div>
+              <div class="left_image_content2 image_content_second">
+                {{ block.settings.image_content_2 }}
+              </div>
+            </div>
+          </div>
+        {% if block.settings.image_url != blank %}</a>{% endif %}
+          </div>
+      <div class="col-md-6 p-0 right-image">
+        {% if block.settings.rimage_url != blank %}<a href="{{ block.settings.rimage_url }}">{% endif %}
+          <div class="right_image_inner">
+            <img class="lazyload desktop_only" src="{{ block.settings.right_image | img_url: 'master' }}">
+            <img class="lazyload mobile_only" src="{% if block.settings.right_image_mobile != blank %}
+              {{ block.settings.right_image_mobile | img_url: 'master' }}
+              {% else %}
+              {{ block.settings.right_image | img_url: 'master' }}
+              {% endif %}
+            ">
+            <div class="image_content">
+              <div class="left_image_content rimage_content_first">
+                {{ block.settings.rimage_content_1 }}
+              </div>
+              <div class="left_image_content2 rimage_content_second">
+                {{ block.settings.rimage_content_2 }}
+              </div>
+            </div>
+          </div>
+        {% if block.settings.rimage_url != blank %}</a>{% endif %}
+      </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+
+
+{% schema %}
+  {
+    "name": "Banner section",
+    "settings": [],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Banner",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Left Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Mobile image"
+        },
+        {
+          "type": "url",
+          "id": "image_url",
+          "label": "Image Url"
+        },
+        {
+          "type": "textarea",
+          "id": "image_content_1",
+          "label": "Image Content 1"
+        },
+        {
+          "type": "textarea",
+          "id": "image_content_2",
+          "label": "Image Content 2"
+        },
+        {
+          "type": "header",
+          "content": "Right Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "right_image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "right_image_mobile",
+          "label": "Mobile image"
+        },
+        {
+          "type": "url",
+          "id": "rimage_url",
+          "label": "Image Url"
+        },
+        {
+          "type": "textarea",
+          "id": "rimage_content_1",
+          "label": "Image Content 1"
+        },
+        {
+          "type": "textarea",
+          "id": "rimage_content_2",
+          "label": "Image Content 2"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner section",
+      "category": "Banner"
+  }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,10 @@
+{% if template contains 'sale' %}
+{%- for variant in product.variants -%}
+    {%- assign sale_variant = false -%}
+    {%- assign sale_tag = 'sale-' | append: variant.sku -%}
+    {%- if product.tags contains sale_tag -%}
+    {%- assign pr_variant = variant -%}
+    {% break %}
+    {% endif %}
+{%- endfor -%}
+{% endif %}

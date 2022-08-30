@@ -1,0 +1,137 @@
+<div id="v10-product-guarantee" style="padding:0px;padding-top:50px; margin:0px;">
+  <div class="container">
+    <div class="glide" id="intro">
+  		<div data-glide-el="track" class="glide__track">
+    		<ul class="glide__slides">
+              	
+              	<li class="glide__slide">
+              		<a href="{{ settings.cbannerurl_1 }}"> <div class="grid ligp">
+                       
+    					<iframe src="https://player.vimeo.com/video/364620601?autoplay=1&muted=1&title=0&byline=0&portrait=0" frameborder="0" width="373" height="373" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                      <h5 class="hide">{{ settings.v10_prod_slider_text_1 }}</h5>
+                      <p class="hide">{{ settings.v10_prod_slider_body_1 }}</p>
+                      </div></a>
+              	</li>
+              
+
+      		
+              
+              	<li class="glide__slide">
+              		<a href="{{ settings.cbannerurl_1 }}"> <div class="grid ligp">
+                      <img src="{{ settings.v10_prod_slider_ico_1 | img_url: '' }}" alt=""/>
+                      <h5 class="hide">{{ settings.v10_prod_slider_text_1 }}</h5>
+                      <p class="hide">{{ settings.v10_prod_slider_body_1 }}</p>
+                      </div></a>
+              	</li>
+              
+      			<li class="glide__slide">
+              		<a href="{{ settings.cbannerurl_2 }}"> <div class="grid ligp">
+                      <img src="{{ settings.v10_prod_slider_ico_2 | img_url: '' }}" alt=""/>
+                      <h5 class="hide">{{ settings.v10_prod_slider_text_2 }}</h5>
+                      <p class="hide">{{ settings.v10_prod_slider_body_2 }}</p>
+                      </div></a>
+              	</li>
+      			<li class="glide__slide">
+              		<a href="{{ settings.cbannerurl_3 }}"> <div class="grid ligp">
+                      <img src="{{ settings.v10_prod_slider_ico_3 | img_url: '' }}" alt=""/>
+                      <h5 class="hide">{{ settings.v10_prod_slider_text_3 }}</h5>
+                      <p class="hide">{{ settings.v10_prod_slider_body_3 }}</p>
+                      </div></a>
+              	</li>
+              	{% if settings.cbannerurl_4 %}
+      			<li class="glide__slide">
+              		<a href="{{ settings.cbannerurl_4 }}"> <div class="grid ligp">
+                      <img src="{{ settings.v10_prod_slider_ico_4 | img_url: '' }}" alt=""/>
+                      <h5 class="hide">{{ settings.v10_prod_slider_text_4 }}</h5>
+                      <p class="hide">{{ settings.v10_prod_slider_body_4 }}</p>
+                      </div></a>
+              	</li>
+              	{% endif %}
+              	{% if settings.cbannerurl_5 %}
+      			<li class="glide__slide">
+              		<a href="{{ settings.cbannerurl_5 }}"> <div class="grid ligp">
+                      <img src="{{ settings.v10_prod_slider_ico_5 | img_url: '' }}" alt=""/>
+                      <h5 class="hide">{{ settings.v10_prod_slider_text_5 }}</h5>
+                      <p class="hide">{{ settings.v10_prod_slider_body_5 }}</p>
+                      </div></a>
+              	</li>
+              	{% endif %}
+              	{% if settings.cbannerurl_6 %}
+      			<li class="glide__slide">
+              		<a href="{{ settings.cbannerurl_6 }}"> <div class="grid ligp">
+                      <img src="{{ settings.v10_prod_slider_ico_6 | img_url: '' }}" alt=""/>
+                      <h5 class="hide">{{ settings.v10_prod_slider_text_6 }}</h5>
+                      <p class="hide">{{ settings.v10_prod_slider_body_6 }}</p>
+                      </div></a>
+              	</li>
+              	{% endif %}
+    		</ul>
+  		</div>
+      	<div class="glide__arrows" data-glide-el="controls">
+        	<button class="glide__arrow glide__arrow--left noone" data-glide-dir="&lt;"><span class="icon-e-30"></span></button>
+        	<button class="glide__arrow glide__arrow--right" data-glide-dir="&gt;"><span class="icon-e-31"></span></button>
+    	</div>
+	</div>
+  </div>
+</div>
+
+
+<style>
+.grid.ligp img {
+    width: 100%!important;
+    padding: 0px;
+}
+
+.grid.ligp {
+    padding: 0px!important;
+}
+  
+button.glide__arrow.glide__arrow--left {
+    background: transparent;
+    border: none;
+    box-shadow: unset;
+    color: #150c0a;
+    font-size: 38px;
+    font-weight: 600;
+}
+  
+  .glide__arrow--left {
+    left: 0px;
+}
+  
+  button.glide__arrow.glide__arrow--right {
+  background: transparent;
+    border: none;
+    box-shadow: unset;
+    color: #150c0a;
+    font-size: 38px;
+    font-weight: 600;
+  }
+  
+  
+  .glide__arrow--right {
+    right: 0px;
+}
+  
+</style>
+<script>
+var glide = new Glide('#intro', {
+  type: 'carousel',
+  scrollLock: true,
+  perView: 3,
+  breakpoints: {
+    800: {
+      perView: 2
+    },
+    480: {
+      perView: 1
+    }
+  }
+})
+
+glide.mount()
+
+
+
+
+</script>

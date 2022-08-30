@@ -1,0 +1,155 @@
+{%- assign item = section.settings -%}
+<div class="container-indent" itemscope itemtype="http://schema.org/Article">
+  <div class="container container-fluid-custom-mobile-padding">
+    <div class="row justify-content-center">
+      <div class="col-xs-12 col-md-10 col-lg-12 col-md-auto">
+        <div class="tt-post-single" itemprop="articleBody">
+          
+          <div class="PostImage">
+          	
+              <img src="{{ article.image.src | img_url: 'master' }}" class="bigBanner">
+          
+          </div>
+		
+          <h1 class="tt-title">{{ article.title }}</h1>
+          {%- if item.blog_show_author or item.blog_show_date -%}
+          <div class="tt-autor">
+            {% if item.blog_show_author %}{{ 'blogs.article.by_author' | t }} <span>{{ article.author }}</span> {% endif %}{% if item.blog_show_date %}{{ 'blogs.article.posted_in' | t }} {{ article.published_at | date: '%B' }} {{ article.published_at | date: '%d, %Y' }}{% endif %}
+          </div>
+          {%- endif -%}
+          
+          
+          <div class="tt-post-content">
+             
+            
+        
+            
+            {{ article.content }}
+ 
+          </div>
+          
+          {%- if article.tags.size > 0 and item.blog_show_tags -%}
+          <div class="post-meta">
+            <span class="item">Tag:</span>
+            <span{% if item.blog_tags_uppercase %} class="text-uppercase"{% endif %}>{%- for tag in article.tags -%}
+              {{ tag | link_to_tag: tag }}{% unless forloop.last %}, {% endunless %}
+            {%- endfor -%}</span>
+          </div>
+          {%- endif -%}
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{%- if item.show_share_buttons -%}
+<div class="container-indent wrapper-social-icon">
+  <div class="container text-center">
+    {%- include 'addthis' -%}
+  </div>
+</div>
+{%- unless blog.comments_enabled? -%}<div class="clear-gap"></div>{%- endunless -%}
+{%- endif -%}
+
+
+{% schema %}
+  {
+    "name": "Posts",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "blog_show_author",
+        "label": "Show author",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_date",
+        "label": "Show date",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_tags",
+        "label": "Show tags",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_tags_uppercase",
+        "label": "Tags uppercase",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_share_buttons",
+        "label": "Show social sharing buttons",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+  
+  .PostImage img {
+    width: 100%;
+    height: auto;
+}
+  
+  .tt-breadcrumb {
+    display: none;
+}
+  
+  h1.tt-title {
+    text-align: left;
+    font-weight: bold !important;
+    text-transform: uppercase;
+    font-size: 24px !important;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    padding-bottom: 0;
+}
+  
+  .tt-post-single .tt-autor {
+    margin-top: 23px;
+    font-size: 12px;
+    font-size: 12px;
+    margin-bottom: 20px;
+    color: #555;
+    text-align: left;
+}
+  
+ .tt-post-content div {
+    color: #000000;
+    font-size: 15px;
+    line-height: 1.6em;
+}
+  
+  h3 {
+    font-size: 25px !important;
+}
+  
+  .tt-post-single {
+    max-width: 1080px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+  
+  
+  
+@media only screen and (max-width: 767px) {
+  
+  .tt-post-single {
+    max-width: 1080px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding: 0px;
+}
+  
+}
+</style>

@@ -1,0 +1,29 @@
+.predictive-search_item-suggestion {
+    text-align: left;
+}
+
+.predictive-search_item-suggestion ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+.predictive-search_item-suggestion ul li a {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 13px 0;
+}
+.predictive-search_item-suggestion ul li svg {
+    margin-right: 15px;
+}
+.predictive-search_item-suggestion ul li a {
+    font-weight: 500;
+    color: #000;
+}
+.predictive-search_item-suggestion ul li a:hover {
+    color: #646464 !important;
+}

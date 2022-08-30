@@ -1,0 +1,20 @@
+{% for article in blog.articles %}     
+<div class="journal-single-box">
+  <a href="{{ article.url }}"><div class="single-box-bg bg-1" style="background-image: url('{{ article.image.src | img_url: '500x500' }}');">
+    </div>
+  </a>
+        <div class="journal-main-content">
+          <div class="top">
+            <h3>{{ article.title }}</h3>
+            {%- if article.excerpt.size > 0 -%}
+            <p> {{ article.excerpt }}</p>
+        {%- else -%}
+            <p> {{ article.content | strip_html | truncate: 150 }}</p>
+        {%- endif -%}
+          </div>
+          <div class="bottom">
+            <a href="{{ article.url }}" class="btns readmore-btn">READ MORE</a>
+          </div>
+        </div>
+      </div>
+{% endfor %}

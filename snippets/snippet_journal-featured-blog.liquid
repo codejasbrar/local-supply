@@ -1,0 +1,50 @@
+<div class="container clearfix pllog">
+  <div class="v10-featured-news-wrapper clearfix">
+      {% assign article = articles[settings['bloglist_featured_item_1']] %}
+      {% assign min = 900 %}
+      {% assign max = 90000 %}
+      {% assign diff = max | minus: min %}
+      {% assign randomNumber = "now" | date: "%N" | modulo: diff | plus: min %}
+      <style>
+        .news-{{ randomNumber }}{
+          background-color: #ece3d2;
+        }
+        .news-{{ randomNumber }} .tags{
+          color: #232323;
+        }
+        .news-{{ randomNumber }} .title{
+          color: #07287d;
+        }
+        .news-{{ randomNumber }} .more a{
+          color: #232323;
+        }
+        .news-{{ randomNumber }} .more a:hover{
+          color: #fd7064;
+        }
+      </style>
+      <div class="content news-{{ randomNumber }}">
+        {% if article.image != '' %}
+        <div class="image">
+          <a href="{{ article.url }}" title="{{ article.title }}">
+            <img src="{{ article.image.src | img_url: '540x' }}" alt="{{ article.title }}"/>
+          </a>
+        </div>
+        {% endif %}
+        <div class="text-content">
+          <div class="tags">
+            {% for tag in article.tags %}
+            <span>{{ tag }} <i>/</i></span>
+            {% endfor %}
+          </div>
+          <div class="title">
+            <a href="{{ article.url }}" title="{{ article.title }}">
+              <h2 class="title">{{ article.title }}</h2>
+            </a>
+          </div>
+          <div class="more">
+            <a href="{{ article.url }}" title="{{ article.title }}">Read More</a>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+{% if product.metafields.okendo.ProductListingSnippet == "<span></span>" or product.metafields.okendo.ProductListingSnippet == "" or product.metafields.okendo.ProductListingSnippet == blank %}
+<div class="empty-star-reviews">
+    <div class="okeReviews">
+        <div class="okeReviews-starRating-indicator-layer"></div>
+    </div>
+</div>
+{% else %}
+<div data-oke-reviews-product-listing-rating>{{ product.metafields.okendo.ProductListingSnippet }}</div>
+{% endif %}

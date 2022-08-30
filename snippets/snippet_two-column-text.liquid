@@ -1,0 +1,27 @@
+
+<section class="local-everywhere-area mt-4" >
+  <div class="container">
+    <div class="container-inner everywhere">
+      <div class="left-top-content">
+                      {%if block.settings.tileText1 %}
+
+        <h1 > {{ block.settings.tileText1 }} </h1>
+                    {%endif%}
+
+<!--         <div class="about-gig-local">
+          {%if block.settings.tileImage1 %}
+        <img src="{{ block.settings.tileImage1 | product_img_url: 'master'  }}">
+          {%endif%}
+        </div> -->
+      </div>
+      <div class="right-bottom-content ">
+        {{ block.settings.content_richtext }}
+      </div>
+    </div>
+              {%if block.settings.tileImage1 %}
+
+    <div class="ml-5 local-text-padding about-gig-local"><img src="{{ block.settings.tileImage1 | product_img_url: 'master'  }}"></div>
+            {%endif%}
+
+  </div>
+</section>

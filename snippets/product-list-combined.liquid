@@ -1,0 +1,19 @@
+{% unless template contains 'index' %}
+    {% assign product_collection = product-list %}
+{% endunless %}
+
+{% comment %}
+{% if product_limit %}
+{% assign for_limit = product_limit %}
+{% else %}
+{% assign for_limit = 5000 %}
+{% endif %}
+{% endcomment %}
+
+{% paginate collection.products by 1000 %}
+<div id="product-list" class="product-list">
+  {% for product in collection.products %}
+  	{% include 'product-block-no-sku' with product %}
+  {% endfor %}
+</div>
+{% endpaginate %}

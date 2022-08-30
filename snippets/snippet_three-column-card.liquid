@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="v10-three-column-card-wrapper clearfix" {{block.shopify_attributes}}>
+
+    <div class="card">
+      <div class="image">
+        <img src="{{ block.settings.cardImage1 | img_url:'400x400' }}"/>
+      </div>
+      <div class="content">
+        <h3 class="title">{{ block.settings.cardHeading1 }}</h3>
+        {{ block.settings.cardRichtext1 }}
+      </div>
+    </div>
+    <div class="card">
+      <div class="image">
+        <img src="{{ block.settings.cardImage2 | img_url:'400x400' }}"/>
+      </div>
+      <div class="content">
+        <h3 class="title">{{ block.settings.cardHeading2 }}</h3>
+        {{ block.settings.cardRichtext2 }}
+      </div>
+    </div>
+    <div class="card">
+      <div class="image">
+        <img src="{{ block.settings.cardImage3 | img_url:'400x400' }}"/>
+      </div>
+      <div class="content">
+        <h3 class="title">{{ block.settings.cardHeading3 }}</h3>
+        {{ block.settings.cardRichtext3 }}
+      </div>
+    </div>
+
+  </div>
+</div>

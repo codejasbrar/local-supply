@@ -1,0 +1,118 @@
+{%- capture html_tabs -%}  
+{%- for block in section.blocks -%}
+{%- assign b_i = block.settings -%}
+{%- case block.type -%}
+  {%- when 'tab_desc' -%}
+    <div class="tt-item{% if b_i.open_tab_by_default %} active{% endif %}">
+      <div class="tt-collapse-title"{% if b_i.title == "" %} style="pointer-events: none; padding-bottom: 0px;"{% endif %}>{{ b_i.title }}</div>
+      <div class="tt-collapse-content">
+       <div class="content product-features">
+      {% if product.metafields.custom_fields["product_features_colelction"] != blank %}
+      	{% assign separator = "|###|" %}
+        {% assign icon_array = product.metafields.custom_fields["icon"] | split: separator %}
+        {% assign label_array = product.metafields.custom_fields["label"] | split: separator %}
+        {% assign fc_keys = product.metafields.custom_fields["product_features_colelction"] | split: "," %}
+        {% for i in fc_keys %}
+          {% assign index = i | plus: 0 %}
+      	  <p>{% if icon_array[index] != blank %}
+        	<span class="icon">{{ icon_array[index] }}</span>{% endif %}{{ label_array[index] }}</p>
+        {% endfor %}
+      {% else %}
+      	{% for i in (1..5) %}
+        {% assign icon = i | prepend: 'icon_' %}
+        {% assign label = i | prepend: 'label_' %}
+        {% if product.metafields.custom_fields[label] != blank %}
+        <p>{% if product.metafields.custom_fields[icon] != blank %}
+          <span class="icon">{{product.metafields.custom_fields[icon]}}</span>{% else %}<span class="icon">-</span>{% endif %}{{product.metafields.custom_fields[label]}}</p>
+        {% endif %}
+        {% endfor %}
+      {% endif %}
+    </div>
+      
+        
+        </div>
+    </div>
+  {%- when 'tab_same_html' -%}
+    <div class="tt-item{% if b_i.open_tab_by_default %} active{% endif %}">
+      <div class="tt-collapse-title">{{ b_i.title }}</div>
+      <div class="tt-collapse-content">{{ b_i.html }}</div>
+    </div>
+  {%- when 'tab_unique' -%}
+	{%- if product_meta[b_i.key] != blank -%}
+    <div class="tt-item{% if b_i.open_tab_by_default %} active{% endif %}">
+      <div class="tt-collapse-title">{{ b_i.title }}</div>
+      <div class="tt-collapse-content">{{ product_meta[b_i.key] }}</div>
+    </div>
+	{%- endif -%}
+
+	<div class="tt-item">
+      <div class="tt-collapse-title">Size Guide</div>
+      <div class="tt-collapse-content" >
+      	
+        {{ product.metafields.product_size["product_size"] }}
+      
+      </div>
+    </div>
+
+<style>
+  td {
+    border: 0px solid #ccc;
+}
+</style>
+
+  {%- when 'tab_review' -%}
+	<div id="tab_review" class="tt-item{% if b_i.open_tab_by_default %} active{% endif %}">
+      <div class="tt-collapse-title">{{ b_i.title }}</div>
+      <div class="tt-collapse-content">
+        
+      </div>
+    </div>
+{%- endcase -%}
+{%- endfor -%}
+{%- endcapture -%}
+
+
+{%- if html_tabs != '' -%}
+<div class="tt-collapse-block prpage-tabs">{{ html_tabs }}</div>
+{%- endif -%}
+
+<script>
+  console.log("we");
+
+  
+  $(window).on('load', function() {
+console.log("dvd");
+    $sad="sad";
+    console.log($sad);
+
+    $('.spr-review').hide();
+$('.spr-review:lt(2)').show();
+});
+</script>
+
+<style type="text/css">
+/*   .spr-review{
+  background:red;
+  } */
+  div.spr-review:nth-child(1) {
+    display: none;
+}
+  .spr-review-reportreview {
+    display: none;
+}
+  span.spr-pagination-page {
+    display: none;
+}
+  
+  .spr-pagination div {
+    height: 50px;
+}
+
+span.spr-pagination-next {
+    width: 75px;
+    height: 31px;
+    font-size: 16px;
+/*     border-bottom: 1px solid #ccc6c6; */
+    margin-right: 82%;
+}
+</style>

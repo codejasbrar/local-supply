@@ -1,0 +1,298 @@
+ {{ 'styles-v10.scss' | asset_url | stylesheet_tag }}
+
+<div class="v10-content">
+  {% include 'v10-storyblock' %}
+  
+</div>
+{% schema %}
+  {
+  "name": "Story2 Page Content",
+  "blocks": [
+  {
+  "type" : "two-column-tile",
+  "name" : "Two Column Tile",
+  "settings": [
+  {
+  "type": "image_picker",
+  "id":	"tileImage1",
+  "label": "1st Image"
+  },
+  {
+  "type": "text",
+  "id":	"tileText1",
+  "label": "1st Text"
+  },
+  {
+  "type": "url",
+  "id": "tileLinkUrl1",
+  "label": "1st Link Url"
+  },
+  {
+  "type": "image_picker",
+  "id":	"tileImage2",
+  "label": "2nd Image"
+  },
+  {
+  "type": "text",
+  "id":	"tileText2",
+  "label": "2nd Text"
+  },
+  {
+  "type": "url",
+  "id": "tileLinkUrl2",
+  "label": "2nd Link Url"
+  }
+  ]
+  },
+  {
+  "type" : "text-block",
+  "name" : "Text Block",
+  "settings" : [
+	{
+      "id": "heading",
+      "type": "text",
+      "label": "Heading"
+    },
+  	{
+    "type": "richtext",
+    "id":	"content_richtext",
+    "label": "Content"
+  	}
+  ]
+  },
+  {
+    "type" : "three-column-tile",
+    "name" : "3 Column Tile",
+    "settings" : [
+	{
+      "id": "heading",
+      "type": "text",
+      "label": "Heading"
+	},
+      {
+      "type": "image_picker",
+      "id":	"tileImage1",
+      "label": "1st Image"
+      },
+      {
+      "type": "text",
+      "id":	"tileText1",
+      "label": "1st Text"
+      },
+      {
+      "type": "url",
+      "id": "tileLinkUrl1",
+      "label": "1st Link Url"
+      },
+      {
+      "type": "image_picker",
+      "id":	"tileImage2",
+      "label": "2nd Image"
+      },
+      {
+      "type": "text",
+      "id":	"tileText2",
+      "label": "2nd Text"
+      },
+      {
+      "type": "url",
+      "id": "tileLinkUrl2",
+      "label": "2nd Link Url"
+      },
+      {
+      "type": "image_picker",
+      "id":	"tileImage3",
+      "label": "3rd Image"
+      },
+      {
+      "type": "text",
+      "id":	"tileText3",
+      "label": "3rd Text"
+      },
+      {
+      "type": "url",
+      "id": "tileLinkUrl3",
+      "label": "3rd Link Url"
+      }
+    ]
+  },
+{
+    "type" : "three-column-card",
+    "name" : "3 Column Card",
+    "settings" : [
+      {
+      "type": "image_picker",
+      "id":	"cardImage1",
+      "label": "1st Image"
+      },
+      {
+      "type": "text",
+      "id":	"cardHeading1",
+      "label": "1st Headline"
+      },
+      {
+      "type": "richtext",
+      "id": "cardRichtext1",
+      "label": "1st Text"
+      },
+      {
+      "type": "image_picker",
+      "id":	"cardImage2",
+      "label": "2nd Image"
+      },
+      {
+      "type": "text",
+      "id":	"cardHeading2",
+      "label": "2nd Headline"
+      },
+      {
+      "type": "richtext",
+      "id": "cardRichtext2",
+      "label": "2nd Text"
+      },
+		{
+      "type": "image_picker",
+      "id":	"cardImage3",
+      "label": "3rd Image"
+      },
+      {
+      "type": "text",
+      "id":	"cardHeading3",
+      "label": "3ed Headline"
+      },
+      {
+      "type": "richtext",
+      "id": "cardRichtext3",
+      "label": "3rd Text"
+      }
+    ]
+  },
+  {
+  "type" : "quote",
+  "name" : "Quote",
+  "settings" : [
+  {
+  "type": "image_picker",
+  "id":	"logo",
+  "label": "1st Logo"
+  },
+  {
+  "type": "textarea",
+  "id":	"quote",
+  "label": "1st Review"
+  },
+  {
+  "type": "image_picker",
+  "id":	"logo2",
+  "label": "2nd Logo"
+  },
+  {
+  "type": "textarea",
+  "id":	"quote2",
+  "label": "2nd Review"
+  },
+  {
+  "type": "image_picker",
+  "id":	"logo3",
+  "label": "3rd Logo"
+  },
+  {
+  "type": "textarea",
+  "id":	"quote3",
+  "label": "3rd Review"
+  }
+  ]
+  },
+  {
+  "type" : "featured-news",
+  "name" : "Featured News",
+  "settings" : [
+  {
+  "type" : "select",
+  "id" : "blockLayout",
+  "label" : "Layout",
+  "options" : [
+  {"value": "image-right", "label": "Image Right"},
+  {"value": "image-left", "label": "Image Left"}
+  ]
+  },
+  {
+  "type":      "color",
+  "id":        "backgroundColour",
+  "label":     "Background Colour",
+  "default":   "#07287d"
+  },
+  {
+  "type":      "color",
+  "id":        "tagColour",
+  "label":     "Tag Colour",
+  "default":   "#fff"
+  },
+  {
+  "type":      "color",
+  "id":        "titleColour",
+  "label":     "Title Colour",
+  "default":   "#fff"
+  },
+  {
+  "type":      "color",
+  "id":        "moreColour",
+  "label":     "Read More Colour",
+  "default":   "#fff"
+  },
+  {
+  "type" : "article",
+  "id" : "featuredArticle",
+  "label" : "Featured News"
+  },
+  {
+  "type": "text",
+  "id":	"readMoreText",
+  "label": "Read more text",
+  "default": "Read more"
+  }
+  ]
+  },
+	{
+		"name" : "Image + Text",
+		"type" : "image-text",
+		"settings" : [
+			{
+				"id": "image",
+				"type": "image_picker",
+				"label": "Image"
+			},
+			{
+                "id": "heading",
+                "type": "text",
+                "label": "Heading"
+            },
+			{
+                "type": "richtext",
+                "id":	"richtext",
+                "label": "Content"
+  			},
+			{
+                "type":      "color",
+                "id":        "bgColour",
+                "label":     "Background Colour",
+                "default":   "#07287d"
+            },
+			{
+                "type":      "color",
+                "id":        "txtColour",
+                "label":     "Text Colour",
+                "default":   "#fff"
+            }
+		]
+	}
+  ],
+  "settings": []
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="v10-text-block-wrapper clearfix" {{block.shopify_attributes}}>
+
+    <div class="content">
+      {% unless block.settings.heading == blank %}
+        <h3>{{ block.settings.heading }}</h3>
+      {% endunless %}
+      {{ block.settings.content_richtext }}
+    </div>
+
+  </div>
+</div>

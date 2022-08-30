@@ -1,0 +1,395 @@
+<div class="cooolBox">
+      
+      <div class="tt-block-title">
+      
+	 
+	
+		  
+		  {%- for block in section.blocks -%}
+			
+			{%- assign b_i = block.settings -%}
+			
+			
+                 <h2 class="tt-title"><a href="{{ b_i.collectionCarasoul.url }}" class="title-hover-underline" title="SHOW ALL">{{ b_i.topHeadingBro3 }}</a></h2>
+ 
+    
+              		{% assign colName = b_i.collectionCarasoul %} 
+			
+			
+				
+			 {%- endfor -%}	
+				 
+           
+      </div>
+      
+	  
+<div id="v10-product-guaranteeTop" style="">
+  <div class="container">
+    <div class="glide" id="intro2_{{ colName }}">
+  		<div data-glide-el="track" class="glide__track">
+    		<ul class="glide__slides">
+			
+			{%- for block in section.blocks -%}
+			
+			{%- assign b_i = block.settings -%}
+			
+			
+			{% assign colName = b_i.collectionCarasoul %} 
+			
+		
+		
+			{% for product in collections[colName].products %}
+              {% if product.available %}
+			
+	
+			
+					<li class="glide__slide">
+              		<a href="{{ product.url }}"> 
+						<div class="grid ligp">
+                        
+                     
+                      {% include 'home-product-grid-item' %}
+                      </div>
+					  
+					  
+					
+					</a>
+                      
+                      
+              	</li>
+              {% endif %}
+			
+			{% endfor %}
+                 
+              	
+				
+			 {%- endfor -%}	
+				 
+			
+      		
+    		</ul>
+  		</div>
+      
+      
+      	<div class="glide__arrows zxc" data-glide-el="controls">
+        	<button class="glide__arrow glide__arrow--left" data-glide-dir="&lt;"><i class="icon-e-14" aria-hidden="true"></i></button>
+        	<button class="glide__arrow glide__arrow--right" data-glide-dir="&gt;"><i class="icon-e-15" aria-hidden="true"></i></button>
+    	</div>
+  </div>
+  </div>
+</div>
+</div>
+
+<style>
+  
+.grid.ligp h5 {
+    color: black;
+    font-size: 34px;
+    text-align: center;
+    margin: 0px;
+}
+  
+.grid.ligp p {
+    color: #000;
+    font-size: 19px;
+    text-align: center;
+}
+  .grid.ligp {
+    text-align: center;
+}
+  
+.cooolBox  .grid.ligp {
+    text-align: center;
+    width: 100%;
+    margin: 0px auto;
+}
+
+.cooolBox {
+    padding: 40px 0px;
+}
+
+.glide__arrow {
+    position: absolute;
+    display: block;
+    top: 25%;
+    z-index: 2;
+    color: #050101;
+	}
+	
+.glide__arrow {
+    position: absolute;
+    display: block;
+    top: 25%;
+    z-index: 2;
+    color: #050101;
+    font-weight: 700;
+    font-size: 28px;
+    box-shadow: unset;
+}
+
+.claRview {
+    float: left;
+    width: 100%;
+}
+
+i.fa.fa-star {
+    font-size: 21px;
+    padding: 5px;
+	color:#EA7B7B;
+}
+.grid.ligp h5 {
+    color: black;
+    font-size: 23px;
+    text-align: center;
+    margin: 0px;
+    padding-top: 20px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.cooolBox .glide__arrow--left {
+    left: -1%;
+}
+
+
+.cooolBox .glide__arrow--right {
+    right: -1%;
+}
+
+.cooolBox {
+    padding: 40px 20px;
+    padding-bottom: 0px;
+}
+
+.glide__arrow {
+ 
+    border: 0px solid rgba(255,255,255,0.5)
+}
+
+.grid.ligp img {
+    padding: 0px !important;
+}
+
+
+  
+.cooolBox .product-title {
+    padding-top: 10px;
+}
+  
+  span.price .money {
+    font-size: 17px;
+    font-weight: 600;
+    padding-top: 8px;
+    color: #000;
+}
+
+  .cooolBox figcaption {
+    text-align: center;
+    padding-top: 10px;
+}
+  
+ .cooolBox  .product-title a {
+    color: #000;
+    text-decoration: none;
+    font-size: 19px;
+}
+  
+  ul.glide__slides .glide__slide {
+    padding: 0px 5px;
+}
+  
+  button.glide__arrow i {
+    font-size: 27px;
+}
+  .cooolBox {
+    float: left;
+    width: 100%;
+}
+  
+ div#v10-product-guaranteeTop .tt-product span.tt-img {
+    height: 300px !important;
+   	background: #EBEBEB;
+}
+  div#v10-product-guaranteeTop .tt-product span.tt-img img {
+    margin: 100px 0!important;
+    padding: 0 25px!important;
+}
+  div#shopify-section-footer-template {
+    float: left;
+    width: 100%;
+}
+  
+  div#shopify-section-1587487398637 {
+    float: left;
+    width: 100%;
+}
+  
+  
+@media only screen and (max-width: 1229px) {
+  .cooolBox .glide__arrow {
+      top: 27%!important;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .cooolBox .glide__arrow {
+      top: 25.5%!important;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .cooolBox .glide__arrow {
+      top: 23.5%!important;
+  }
+} 
+@media only screen and (max-width: 900px) {
+  .cooolBox .glide__arrow {
+      top: 22.5%!important;
+  }
+} 
+@media only screen and (max-width: 800px) {
+  .cooolBox .glide__arrow {
+      top: 21.5%!important;
+  }
+} 
+@media only screen and (max-width: 767px) {
+  .cooolBox .glide__arrow {
+    top: 16.5%!important;
+  }
+  .cooolBox .glide__arrow .icon-e-15:before, .cooolBox .glide__arrow .icon-e-14:before, .pageproduct .glide__arrows span.icon-g-09, .pageproduct .glide__arrows span.icon-g-08 {
+    font-size: 19px!important;
+  }
+  .glide__arrow--left {
+    left: -10% !important;
+}
+
+
+.glide__arrow--right {
+    right: -10% !important;
+}
+
+  .grid.ligp {
+    text-align: center;
+    width: 80%;
+    margin: 0px auto;
+}
+  
+  .product-parent .tt-description .tt-product-inside-hover {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: unset;
+    width: 100%;
+}
+  
+  .glide__arrow {
+  
+    top: 20%;
+  
+}
+
+}
+
+@media only screen and (max-width: 515px) {
+  .cooolBox .glide__arrow {
+      top: 15%!important;
+  }
+}
+@media only screen and (max-width: 493px) {
+  .cooolBox .glide__arrow {
+      top: 13%!important;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .cooolBox .glide__arrow {
+    top: 30%!important;
+  }
+}
+@media only screen and (max-width: 370px) {
+  .cooolBox .glide__arrow {
+    top: 28%!important;
+  }
+}
+@media only screen and (max-width: 310px) {
+  .cooolBox .glide__arrow {
+    top: 24%!important;
+  }
+}
+</style>
+<script>
+var glide = new Glide('#intro2_{{ colName }}', {
+  type: 'carousel',
+  scrollLock: true,
+  perView: 3,
+  breakpoints: {
+    800: {
+      perView: 3
+    },
+    480: {
+      perView: 1
+    }
+  }
+})
+
+glide.mount()
+
+
+
+
+</script>
+		
+
+
+{% schema %}
+  {
+    "name": "Collection product slider",
+    "settings": [
+        {
+          "type": "checkbox",
+          "id": "topoffset",
+          "label": "Top Offset",
+          "default": false
+        }
+		
+	],
+    "blocks": [
+      {
+        "type": "item",
+		"limit": 1,
+        "name": "Choose Collection",
+        "settings": [
+		  
+          {
+            "type": "collection",
+            "id": "collectionCarasoul",
+            "label": "Choose Collection"
+			
+          },
+		  {	
+            "type": "text",
+            "id": "topHeadingBro3",
+            "label": "Top Heading"
+          }
+		]
+	  }
+      
+	],
+    "presets": [
+      {
+        "name": "Collection product slider",
+      	"category": "Collection",
+        "blocks": [
+          {
+            "type": "item"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+{% stylesheet %}
+.snptwdgt-container{
+margin-top: 20px;
+}
+.snptwdgt-container .snptwdgt__ftr{
+display: none;
+}
+{% endstylesheet %}

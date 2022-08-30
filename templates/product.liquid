@@ -1,0 +1,131 @@
+{%- comment -%}
+  The contents of the product.liquid template can be found in /sections/product-template.liquid
+{%- endcomment -%}
+
+{% assign current_variant = product.selected_or_first_available_variant %}
+<div itemscope itemtype="http://schema.org/Product" class="product_page_mobile_slider_no_margin_top">
+  <meta itemprop="name" content="{{ product.title }}">
+  <meta itemprop="url" content="{{  shop.url | append: product.url }}">
+  {%- if product.featured_image -%}
+  {%- assign image_size = product.featured_image.width | append: 'x' -%}
+  <link itemprop="image" content="{{ product.featured_image.src | img_url: image_size | prepend: "https:" }}">
+  {%- endif -%}
+  <meta itemprop="description" content="{{ product.description | strip_html }}">
+  {%- if current_variant.sku != blank -%}
+  <meta itemprop="sku" content="{{ current_variant.sku }}">
+  {%- endif -%}
+  <meta itemprop="brand" content="{{ product.vendor }}">
+  {%- for variant in product.variants -%}
+  <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+    {%- if variant.sku != blank -%}
+    <meta itemprop="sku" content="{{ variant.sku }}">
+    {%- endif -%}
+    <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+    <meta itemprop="price" content="{{ variant.price | divided_by: 100.00 }}">
+    <meta itemprop="priceCurrency" content="{{ cart.currency.iso_code }}">
+    <link itemprop="url" href="{{ shop.url | append: variant.url }}">
+    <meta itemprop="priceValidUntil" content="{{ 'now' | date: '%s' | plus: 31536000 | date: '%Y-%m-%d' | uri_encode | replace:'+','%20' }}">
+  </div>
+  {%- endfor -%}
+
+  {% section 'product-template' %}
+  
+   
+
+  
+</div>
+
+{% include "modal-video" %}
+
+
+<script>
+  
+  
+  global_quantity = {};
+  {% for variant in product.variants %}
+  {% if variant.inventory_policy == "continue" %}
+  	global_quantity[{{ variant.id }}] = 'continue' + {{ variant.inventory_quantity }};
+  {% else %}
+  	global_quantity[{{ variant.id }}] = {{ variant.inventory_quantity }};
+  {% endif %}
+  {% endfor %}
+    
+  {% if product.available and settings.satc_show %}
+    window.addEventListener('DOMContentLoaded', function() {
+      $(document).ready(function(){
+        $('.btn-addtocart').length && $('.tt-fixed-product-wrapper').length && initStickyAddToCart();
+      })
+    });
+
+    function initStickyAddToCart(){
+      $('.tt-back-to-top').length && $('.tt-back-to-top').remove();
+
+      var b = $('.btn-addtocart').first(),
+          p = $('.tt-fixed-product-wrapper'),
+          q = $('.tt-product-single-info'),
+          c = q.find('.tt-input-counter').first();
+
+      $(window).resize(isatcResize);
+      $(window).scroll(isatcScrollHandler);
+      isatcResize();
+      isatcScrollHandler();
+
+      $('body').on('click', '.tt-fixed-product-wrapper .plus-btn', function(e){
+        c.find('.plus-btn').trigger('click');
+        p.find('.tt-input-counter').replaceWith(c.clone());
+      })
+      $('body').on('click', '.tt-fixed-product-wrapper .minus-btn', function(e){
+        c.find('.minus-btn').trigger('click');
+        p.find('.tt-input-counter').replaceWith(c.clone());
+      })
+      $('body').on('click', '.tt-fixed-product-wrapper .btn', function(e){
+        e.preventDefault();
+        b.trigger('click');
+      })
+      $('body').on('change', '.tt-fixed-product-wrapper .tt-input-counter input', function(e){
+        c.find('input').val($(this).val()).trigger('change');
+        p.find('.tt-input-counter').replaceWith(c.clone());
+      })
+      $('body').on('click focusout', '.tt-fixed-product-wrapper select', function(e){
+        if(e.type == 'click' && !p.find('form').hasClass('formactive')){
+          p.find('form').addClass('formactive');
+          return false;
+        }
+        p.find('form').removeClass('formactive');
+      })
+      $('body').on('change', '.tt-fixed-product-wrapper select', function(e){
+        setTimeout(function(){
+          p.find('.btn').replaceWith($('.btn-addtocart').first().clone().removeClass('btn-lg btn-addtocart addtocart-js').addClass('stickyaddtocart'));
+          p.find('.tt-price').replaceWith(q.find('.tt-price').first().clone());
+        }, 200)
+      })
+      
+      function isatcResize(){
+        if($('.select_options').length) return false;
+        var h = p.innerHeight() - 4;
+        $('footer').css('padding-bottom', h);
+      }
+      function isatcScrollHandler(){
+        if($(window).scrollTop() > b.offset().top){
+          if(p.hasClass('atdshowed') || $('.select_options').length) return false;
+          var c_ = c.clone();
+          p.addClass('atdshowed').find('.tt-input-counter').replaceWith(c_);
+          p.find('.tt-price').replaceWith(q.find('.tt-price').first().clone());
+          p.find('.btn').replaceWith($('.btn-addtocart').first().clone().removeClass('btn-lg btn-addtocart addtocart-js').addClass('stickyaddtocart'));
+          $('.tt-promo-fixed').length && $('.tt-promo-fixed').css('bottom', p.innerHeight()+20);
+          p.fadeIn(200);
+        }
+        else{
+          if(!p.hasClass('atdshowed') || $('.select_options').length) return false;
+          $('.tt-promo-fixed').length && $('.tt-promo-fixed').css('bottom', '');
+          p.removeClass('atdshowed').fadeOut(200);
+        }
+      }
+    }
+  {% endif %}
+  
+ 
+  
+  
+</script>
+

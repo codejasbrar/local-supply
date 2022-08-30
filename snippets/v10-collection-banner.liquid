@@ -1,0 +1,537 @@
+<!-- snippets/v10-collection-banner -->
+{% assign class = 'v10-collection-banner' %}
+<style>
+.{{ class }}{
+  text-align: center;
+}
+.{{ class }} .collection-title{
+  font-weight: 500;
+  font-size: 40px;
+  text-transform: uppercase;
+}
+.{{ class }} .filter .inline-list{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.{{ class }} .filter .inline-list li{
+  display: inline-block;
+  padding: 10px 15px;
+}
+.{{ class }} .filter .inline-list li a{
+  display: block;
+}
+  .{{ class }} .filter .inline-list li a:hover{
+  	color: #07287d;
+  }
+  .{{ class }} .filter .inline-list li a.active{
+  	border-bottom: 1px solid #07287d;
+    color: #07287d;
+  }
+.{{ class }} .tab-content-wrapper .reset-flter{
+  display: none;
+}
+.{{ class }} .tab-content-wrapper .reset-flter a{
+  border-bottom: 1px solid;
+}
+.{{ class }} .tab-content-wrapper .tab-content{
+  display: none;
+}
+.{{ class }} .tab-content-wrapper .tab-content.active{
+  display: block;
+  padding: 20px;
+}
+.{{ class }} .tab-content-wrapper .tab-content label{
+  display: inline-block;
+  margin: 0 10px 10px;
+}
+  .{{ class }} .tab-content-wrapper .tab-content label:hover .ls-checkbox-wrapper{
+  	background-color: #07287d;
+  }
+.{{ class }} .tab-content-wrapper .tab-content input{
+  margin-bottom: 5px;
+}
+  .{{ class }} .tab-content-wrapper .tab-content:not(.colour) .ls-checkbox-wrapper::before{
+  	content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    z-index: 999;
+    border: 2px solid #fff;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+  }
+  .ls-checkbox-wrapper{
+  	margin-right: 10px;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    background-color: #ebebeb;
+    border-radius: 50%;
+    display: inline-block;
+    z-index: 1;
+  }
+  .ls-checkbox-wrapper img{
+  	position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    left: 2px;
+    top: 2px;
+    z-index: 2;
+  }
+  .tab-content  label.active .text{
+  	border-bottom: 1px solid #07287d;
+  }
+  .ls-checkbox-wrapper.active{
+  	background-color: #07287d;
+  }
+  .ls-checkbox-wrapper input{
+  	position: relative;
+    z-index: 3;
+    opacity: 0;
+  }
+/*   .filter.travel-packs .travel-packs,
+  .filter.digital-readers .digital-readers{
+  	display: none !important;
+  }
+   */
+  
+  .{{ class }} .tab-content-wrapper .tab-content.colour{
+    text-align: left;
+  }
+  .{{ class }} .tab-content-wrapper .tab-content.colour label{
+    text-align: left;
+    width: 13%;
+  }
+  .mobile-filter-toggle a{
+    font-size: 19px;
+    color: #000;
+    text-decoration: underline;
+  }
+  .filter.active .inline-list{
+  	display: block;
+  }
+  .mobile-only{
+  	display: none;
+  }
+  @media (max-width: 1149px){
+    .{{ class }} .tab-content-wrapper .tab-content.colour label{
+    	width: 14%;
+    }
+  }
+  @media (max-width: 1024px){
+    .{{ class }} .tab-content-wrapper .tab-content.colour label{
+    	width: 21%;
+    }
+  }
+  @media (max-width: 768px){
+    .collection-listing .product-block{
+    	width: 47%;
+    }
+  }
+  @media (max-width: 767px){
+    .mobile-only{
+      display: block;
+    }
+    .mobile-filter-toggle{
+      margin-bottom: 15px;
+    }
+    .filter .inline-list,
+    .filter .tab-content-wrapper{
+      display: none;
+    }
+    .filter.active .tab-content-wrapper{
+      display: initial;
+    }
+    .v10-collection-banner .tab-content-wrapper .tab-content.colour label{
+      width: 100%;
+      margin: 0 10px 20px;
+    }
+    .v10-collection-banner .reset-flter > a{
+    }
+    #content > .container.desktop-only{
+      display: block;
+    }
+    #content > .container.desktop-only a{
+      color: #afafaf;
+      font-size: 16px;
+    }
+  }
+  
+  
+  
+  /**** new css ***/
+  
+  .tt-collapse {
+    position: relative;
+    text-align: center;
+    margin: 0px auto;
+}
+ 
+ .tab-content-wrapper h3.tt-collapse-title {
+    display: none;
+}
+  
+  .row.tt-layout-promo-box {
+    display: none;
+}
+  
+  .v10-collection-banner .filter .inline-list li a {
+    font-size: 16px;
+    font-weight: 400;
+    color: #000000;
+}
+  
+  ul.tt-options-swatch.options-middle.filtres-js li a {
+    font-weight: 400;
+    color: #000000;
+}
+  
+
+  
+  #tt-pageContent > .container-indent:not(.nomargin):not([class^="tt-offset"]) {
+    margin-top: 20px;
+}
+  
+  .v10-collection-banner .tab-content-wrapper .reset-flter a {
+    border-bottom: 1px solid;
+    color: #073642;
+    font-size: 15px;
+    font-weight: 500;
+}
+  
+.tab-content.colour ul.tt-options-swatch.options-middle.filtres-js li a {
+    font-weight: 400;
+    color: #000000;
+    border-radius: 50%;
+}
+  
+  ul.tt-options-swatch li {
+    margin: 10px 25px 0;
+}
+
+  .v10-collection-banner .filter .inline-list li a {
+    font-size: 18px;
+    font-weight: 400;
+    color: #000000;
+}
+  
+.tab-content.shape.active ul.tt-options-swatch.options-middle.filtres-js li a {
+    font-size: 18px;
+}
+  
+.tab-content.material.active ul.tt-options-swatch.options-middle.filtres-js li a {
+    font-size: 18px;
+}
+  
+  .tab-content.collaborations.active ul.tt-options-swatch.options-middle.filtres-js li a {
+    font-size: 18px;
+}
+  
+  .tab-content.digital-readers.active a {
+    color: #04247f;
+    font-size: 18px;
+    opacity: 1;
+    font-weight: 500;
+}
+
+  
+  .tab-content.travel-packs a {
+    color: #04247f;
+    font-size: 18px;
+    opacity: 1;
+    font-weight: 500;
+}
+  
+</style>
+<div class="{{ class }}">
+  <div class="header clearfix">
+    <h1 class="collection-title">{{ collection.title }}</h1>
+  </div>
+  <div class="filter clearfix {{ collection.handle }}">
+    <div class="filter_tab">
+      <div class="mobile-filter-toggle filter-toggle">
+        <a href="#">Filter</a>
+      </div>
+      <span>OR</span>
+      <div class="mobile-filter-toggle search-toggle">
+        <a href="#">SEARCH</a>
+      </div>
+    </div>
+
+    <div class="tab-content-wrapper12 filter">
+
+      <div class="reset-flter filtres-remove-js {% unless current_tags %}empty{% endunless %}">
+    {% for tag in current_tags %}
+      {% assign tags_class = 'class="' | append: tag | append: '" ' | append: 'title="' %}
+      {{ tag | link_to_tag: tag | replace: 'title="', tags_class }}
+    {% endfor %}
+          {% if collection %}
+    <a href="/collections/{{collection.handle}}" data-url="/collections/{{collection.handle}}" class="clear_all reset-filter">CLEAR ALL</a> 
+  {% else %} 
+    <a href="/collections/all" data-url="/collections/all" class="clear_all reset-filter">CLEAR ALL</a> 
+  {% endif %} 
+       <!-- <a href="#product-list" class="btn mobile-only">Show Result</a>-->
+      </div>
+
+		<div class="tab-content colour">
+		<!-- {% assign colour_filter = settings.colour_filter | split:',' %}
+		{% for filter in colour_filter %}
+		{% assign input = filter | split:'|' %}
+		{% if input[1] contains '"' %}
+		{% assign input_data = input[1] | split: '"' %}
+		<label><span class="ls-checkbox-wrapper"><img src="{{ input_data[1] | asset_img_url }}"/><input class="ls-checkbox" type="checkbox" name="colour" value="{{ input[0] }}"/></span><span class="text">{{ input_data[0] }}</span></label>
+		{% else %}
+		<label><span class="ls-checkbox-wrapper"><input class="ls-checkbox" type="checkbox" name="colour" value="{{ input[0] }}"/></span><span class="text">{{ input[1] }}</span></label>
+		{% endif %}
+
+		{% endfor %}--->
+
+		{%- capture value -%}{%- include "collection-sidebar-filter-x" index:1 -%}{%- endcapture -%}{{ value | strip }}
+
+		</div>
+      <div class="tab-content shape">
+      	<!--{% assign shape_filter = settings.shape_filter | split:',' %}
+        {% for filter in shape_filter %}
+        	{% assign input = filter | split:'|' %}
+        	<label><span class="ls-checkbox-wrapper"><input class="ls-checkbox" type="checkbox" name="colour" value="{{ input[0] }}"/></span><span class="text">{{ input[1] }}</span></label>
+        {% endfor %}--->
+		{%- capture value -%}{%- include "collection-sidebar-filter-x" index:2 -%}{%- endcapture -%}{{ value | strip }}
+      </div>
+      <div class="tab-content material">
+      <!---	{% assign material_filter = settings.material_filter | split:',' %}
+        {% for filter in material_filter %}
+        	{% assign input = filter | split:'|' %}
+        	<label><span class="ls-checkbox-wrapper"><input class="ls-checkbox" type="checkbox" name="colour" value="{{ input[0] }}"/></span><span class="text">{{ input[1] }}</span></label>
+        {% endfor %}--->
+        
+        {%- capture value -%}{%- include "collection-sidebar-filter-x" index:3 -%}{%- endcapture -%}{{ value | strip }}
+        
+      </div>
+      {%- comment -%}
+      <div class="tab-content travel-packs {% if collection.handle == 'travel-packs' %}active{% endif %}">
+        <a href="/collections/all-products">All Products</a>
+      </div>
+      <div class="tab-content digital-readers {% if collection.handle == 'blue-light-blockers' %}active{% endif %}">
+      	<a href="/collections/all-products">All Products</a>
+      </div>
+      {%- endcomment -%}
+      <div class="tab-content collaborations">
+      <!---	{% assign collaboration_filter = settings.collaboration_filter | split:',' %}
+        {% for filter in collaboration_filter %}
+        	{% assign input = filter | split:'|' %}
+        	<label><span class="ls-checkbox-wrapper"><input class="ls-checkbox" type="checkbox" name="colour" value="{{ input[0] }}"/></span><span class="text">{{ input[1] }}</span></label>
+        {% endfor %}--->
+       {%- capture value -%}{%- include "collection-sidebar-filter-x" index:4 -%}{%- endcapture -%}{{ value | strip }}
+      </div>
+      
+      <div class="tab-content Fit">
+      <!---	{% assign collaboration_filter = settings.fit_filter | split:',' %}
+        {% for filter in fit_filter %}
+        	{% assign input = filter | split:'|' %}
+        	<label><span class="ls-checkbox-wrapper"><input class="ls-checkbox" type="checkbox" name="colour" value="{{ input[0] }}"/></span><span class="text">{{ input[1] }}</span></label>
+        {% endfor %}--->
+       {%- capture value -%}{%- include "collection-sidebar-filter-x" index:5 -%}{%- endcapture -%}{{ value | strip }}
+      </div>
+
+      <div class="close-icon"><span>X</span></div>
+    </div>
+    <div class="tab-content-wrapper12 search">
+      <div class="search_form_filter">
+              <form action="/search" method="get" role="search">
+          <div class="tt-col">
+            <input type="hidden" name="type" value="product" />
+            <input class="tt-search-input"
+                   type="search"
+                   name="q"
+                   placeholder="{{ 'general.search.place_holder' | t }}"
+                   aria-label="{{ 'general.search.place_holder' | t }}">
+            <button type="submit" class="tt-btn-search">GO</button>
+          </div>
+          <!--<div class="tt-info-text">{{ 'general.search.header_message' | t }}</div>-->
+        </form>
+      </div>
+      <div class="close-icon"><span>X</span></div>
+    </div>
+  </div>
+</div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  let filter = [],
+      currentCollection = '{{ collection.handle }}';
+  
+  function hideSameCollection(){
+    $('.product-block').each(function(i, el){
+      
+      //console.log(currentCollection);
+      if(currentCollection == 'blue-light-blockers'){
+        $(el).show();
+      } else {
+        //console.log($(el));
+        if($(el).hasClass('default_view')){
+          $(el).show();
+        } else {
+          $(el).hide();
+        }
+      }
+    });
+  }
+  function resetFilter(){
+    console.log('resetFilter');
+    return 0;
+  	$('.product-list .product-block').each(function(i, el){
+    	$(el).show();
+  	});
+  	$('.{{ class }} .filter input[type="checkbox"]').prop('checked', false);
+    $('.ls-checkbox-wrapper').removeClass('active').parent().removeClass('active');
+    //$('.tab-content').removeClass('active');
+    hideSameCollection();
+    //$('.reset-flter').hide();
+    filter = [];
+  }
+  
+  function checkProduct(label){
+    if(label.indexOf(':fullname') !== -1){
+      return true;
+    } else {
+      return false;
+    }
+  }
+  
+  function doFilter(){
+    if(_.size(filter) == 0) {
+      resetFilter();
+      return;
+    }
+    
+    $('.product-list .product-block').removeClass('visible');
+    
+    $('.product-list .product-block').each(function(i, el){
+      let active = false,
+          fullname = false;
+      
+      //hideSameCollection();
+      
+      _.map(filter, function(val){
+        if(val.indexOf('+') !== -1){
+          // found
+          val = val.split('+');
+          _.map(val, function(sub){
+            sub = sub.toLowerCase();
+            if(checkProduct(sub)){
+              sub = sub.replace(':fullname', '');
+              fullname = true;
+            } else {
+              fullname = false;
+            }
+            if($(el).hasClass(sub)){
+              active = true;
+            }
+          });
+          
+        } else {
+          val = val.toLowerCase();
+          if(checkProduct(val)){
+            val = val.replace(':fullname', '');
+            fullname = true;
+          } else {
+            fullname = false;
+          }
+          if($(el).hasClass(val)){
+            active = true;
+          }
+        }
+      });
+      if(!active){
+      	$(el).hide();
+        $(el).find('.title span').hide();
+      } else {
+      	$(el).show();
+        if(fullname){
+          $(el).find('.title span').show();
+        }
+      }
+    });
+    
+    $('.reset-flter').show();
+  }
+    
+  $('.{{ class }} .filter .reset-filter').on('click', function(e){
+    e.preventDefault();
+    //resetFilter();
+  });
+  
+  $('.{{ class }} .filter input[type="checkbox"]').on('click', function(){
+    let val = $(this).val();
+  
+    if($(this).is(':checked')){
+      filter.push(val);
+      $(this).parents('label').addClass('active');
+    } else {
+      filter = _.without(filter, val);
+      $(this).parents('label').removeClass('active');
+    }
+  
+  	doFilter();
+  });
+  $('.{{ class }} .filter .tab').on('click', function(e){
+    e.preventDefault();
+    if($(this).hasClass('link')){
+      window.location.href = $(this).attr('href');
+      return false;
+    }
+    
+  	let target = $(this).data('target');
+  
+    if($(this).hasClass('active')){
+      $(this).removeClass('active');
+    } else {
+      $('.{{ class }} .filter .tab').removeClass('active');
+      $(this).addClass('active');
+  	}
+    
+    if(!$('.{{ class }} .filter .tab-content.'+target).hasClass('active')){
+      $('.{{ class }} .filter .tab-content').removeClass('active');
+      $('.{{ class }} .filter .tab-content.'+target).addClass('active');
+    }else{
+      $('.{{ class }} .filter .tab-content.'+target).removeClass('active');
+    }
+  });
+  $('.{{ class }} .mobile-filter-toggle a').on('click', function(){
+  	$(this).parents('.filter').toggleClass('active');
+  
+  });
+  $(".filter-toggle").click(function(){
+  	$(".tab-content-wrapper12.search").removeClass("open");
+  	$(".tab-content-wrapper12.filter").toggleClass("open");
+	});
+   $(".search-toggle").click(function(){
+  	$(".tab-content-wrapper12.filter").removeClass("open");
+  	$(".tab-content-wrapper12.search").toggleClass("open");
+	});
+  $(".close-icon").click(function(){
+  	$(".tab-content-wrapper12").removeClass("open");
+	});
+  $('.reset-filter').click(function() {
+    //var href = $(this).data('url');
+	  //location.href = href;
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    filterChangeSize();
+    $(window).resize(function(){
+      filterChangeSize();
+    });
+  });
+  function filterChangeSize() {
+    if ( window.innerWidth > 767 ) {
+      $('.tab-content-wrapper12.filter .tt-collapse').addClass('open');
+      $('.tab-content-wrapper12.filter .tt-collapse .tt-collapse-content').show();
+    } else {
+      $('.tab-content-wrapper12.filter .tt-collapse').removeClass('open');
+      $('.tab-content-wrapper12.filter .tt-collapse .tt-collapse-content').hide();
+    }
+  }
+</script>

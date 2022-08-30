@@ -1,0 +1,33 @@
+{% assign show_normal_filter = false %}
+{% assign tag_cats = '' %}
+{% if settings.coll_show_tags %}
+  {% for tag in collection.all_tags %}
+    {% if tag contains 'meta-filter-' %}
+      {% assign cat_name = tag | remove: 'meta-filter-' | split: '-' | first %}
+      {% unless tag_cats contains cat_name %}
+      {% capture tag_cats %}{{ tag_cats }},{{ cat_name }}{% endcapture %}
+      {% endunless %}
+	{% else %}
+      {% unless tag contains 'meta-' %}{% assign show_normal_filter = true %}{% endunless %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+{% assign tag_cats_split = tag_cats | split: ',' %}
+        
+<div class="container collection-content-area">
+  <div class="collection-content">
+    {% include 'v10-collection-banner' %}
+  	{% if collection.products.size == 0 %}
+    <div class="container"><h5 class="align-centre">{{ 'collections.general.no_matches' | t }}</h5></div>
+    {% else %}
+        {% unless settings.coll_full_width_prods %}<div class="container v2_collection_list">{% endunless %}
+
+        <div class="collection-listing{% if settings.coll_gridstream_mode == 'stream' %}-stream{% endif %} cf">
+            {% include 'product-list-combined' with collection %}
+        </div>
+
+        {% unless settings.coll_full_width_prods %}</div>{% endunless %}
+    {% endif %}
+    <div class="generic_spacer_20"></div>
+  </div>
+</div>

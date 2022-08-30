@@ -1,0 +1,49 @@
+{% for block in section.blocks %}
+  <div class="block about container" {{ block.shopify_attributes }}>
+    {% case block.type %}
+    {% when 'two-column-5headtitle' %}
+      {% include 'snippet_two-column-5headtitle' %}
+    {% when 'two-column-text' %}
+      {% include 'snippet_two-column-text' %}
+    {% when 'text-block'%}
+      {% include 'snippet_text-block' %}
+    {% when 'three-column-tile' %}
+      {% include 'snippet_three-column-tile' %}
+    {% when 'three-column-card' %}
+      {% include 'snippet_three-column-card' %}
+    {% when 'two-column-tilecol' %}
+      {% include 'snippet_two-column-tilecol' %}
+    {% when 'featured-news' %}
+      {% include 'snippet_featured-news' %}
+    {% when 'image-text' %}
+      {% include 'snippet_image-text' %}
+    {%when 'two-column-and-image'%}
+    {% include 'two-column-and-image'%}
+   
+    {% endcase %}
+  </div>
+
+
+{% endfor %}
+
+
+
+
+<style>
+  @media(max-width:700px){
+  .container {
+    
+    padding-left: 6px;
+   
+}
+    
+    h1:not(.tt-title-subpages):not([class^="tt-title"]):not([class^="tt-collapse"]):not([class^="tt-aside"]) {
+   
+    margin-left: 0px;
+}
+    section.local-everywhere-area.our-values {
+    padding-left: 0px!important;
+}
+  
+  }
+</style>

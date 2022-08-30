@@ -1,0 +1,197 @@
+<!-- tt-mobile-header -->
+<div class="tt-mobile-header" id="header_mobile">
+ {% comment %}  
+ 
+ <div class="container-fluid">
+    <div class="tt-header-row">
+      <div class="tt-mobile-parent-menu">
+        <div class="tt-menu-toggle mainmenumob-js">
+          {% include "svg-mobile-menu" %}
+          
+        </div>
+      </div>
+	  
+	  
+      <!-- search -->
+      <div class="tt-mobile-parent-search tt-parent-box"></div>
+      <!-- /search -->
+      {%- unless settings.catalogue_mode -%}
+      {%- if template != "cart" -%}
+      <!-- cart -->
+      <div class="tt-mobile-parent-cart tt-parent-box"></div>
+      <!-- /cart -->
+      {%- endif -%}
+      {%- endunless -%}
+      {%- if item.show_customer_links -%}
+      <!-- account -->
+      <div class="tt-mobile-parent-account tt-parent-box"></div>
+      <!-- /account -->
+      {%- endif -%}
+      {%- if item.show_options_links -%}
+      <!-- currency -->
+      <div class="tt-mobile-parent-multi tt-parent-box"></div>
+      <!-- /currency -->
+      {%- endif -%}
+    </div>
+  </div>
+  {% endcomment %}
+  <div class="container-fluid tt-top-line">
+    <div class="row">
+      <div class="tt-logo-container">
+        <div class="tt-mobile-parent-menu">
+          {% comment %}
+          <div class="tt-menu-toggle mainmenumob-js">
+            {% include "svg-mobile-menu" %}
+          </div>
+          {% endcomment %}
+          <div class="local-supply-mobile-menu-toggle">
+            <i class="fa fa-bars"></i>
+            <i class="fa fa-times" style="display: none"></i>
+          </div>
+        </div>
+        <a class="tt-logo tt-logo-alignment mobile-logo-local" href="/">
+          {% comment %}
+          {%- if headerlogomobile contains "title_" -%}
+          <h2>{{ headerlogomobile | split:"title_" | last }}</h2>
+          {%- else -%}
+          <img src="{{ headerlogomobile }}" srcset="{{ headerlogomobile }} 1x, {{ headerlogomobileretina }} 2x" alt="{{ headerlogomobilealt }}" class="tt-retina">
+          {%- endif -%}
+          {% endcomment %}
+<!--           <h2>LOCAL SUPPLY</h2> -->
+          <img src="{{ headerlogo }}"
+                   srcset="{{ headerlogo }} 1x, {{ headerlogoretina }} 2x"
+                   alt="{{ headerlogoalt }}"
+                   class="tt-retina" itemprop="logo" style="top:{{ item.logo_margin_top }}px"/>
+         
+        </a>
+        {%- unless settings.catalogue_mode -%}
+        {%- if template != "cart" -%}
+        <!-- cart -->
+        <div class="tt-mobile-parent-search tt-parent-box"></div>
+        <div class="tt-mobile-parent-cart tt-parent-box"></div>
+        <!-- /cart -->
+        {%- endif -%}
+        {%- endunless -%}
+      </div>
+    </div>
+    <div class="row local-supply-mobile-menu-row local-hide">
+      <ul class="local-supply-mobile-menu-list">
+        {% for link in linklists[section.settings.mobile_menu].links %}
+        <li>
+          <a href="{{ link.url }}"{% if link.links != blank %}class="local-has-submenu" data-submenu="{{ link.handle }}{{ forloop.index }}"{% endif %}>{{ link.title }}</a>
+          {% if link.links != blank %}
+          <ul class="local-supply-mobile-submenu-list local-hide" id="{{ link.handle }}{{ forloop.index }}">
+            {% for child in link.links %}
+            <li>
+              <a href="{{ child.url }}">
+                {{ child.title }}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </li>
+        {% endfor %}
+        <li>
+          <a href="#" onclick="clicksearchbtn()">Search</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <!---<div class="container-fluid tt-top-line">
+    <div class="row">
+      <div class="tt-logo-container">
+        <a class="tt-logo tt-logo-alignment" href="/">
+          {%- if headerlogomobile contains "title_" -%}<h2>{{ headerlogomobile | split:"title_" | last }}</h2>
+          {%- else -%}<img src="{{ headerlogomobile }}"
+                           srcset="{{ headerlogomobile }} 1x, {{ headerlogomobileretina }} 2x"
+                           alt="{{ headerlogomobilealt }}"
+                           class="tt-retina">
+          {%- endif -%}
+        </a>
+      </div>
+    </div>
+  </div>--->
+</div>
+
+<style>
+@media only screen and (max-width: 767px) {
+  
+header .tt-logo-alignment {
+    position: relative;
+    text-align: left;
+}
+.tt-cart.tt-dropdown-obj span {
+    display: block;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+	.tt-cart.tt-dropdown-obj .icon-f-46 {
+		display: none;
+	}
+
+header .tt-logo {
+    position: relative;
+    display: -ms-inline-flexbox;
+    display: -webkit-inline-flex;
+    display: block;
+    width: 33%;
+}
+
+.tt-mobile-parent-menu {
+    width: 33%;
+    text-align: center;
+}
+
+.tt-mobile-header .tt-parent-box {
+    margin-left: 0px;
+    width: 33%;
+    text-align: center;
+}
+  
+  .tt-mobile-header .tt-parent-box {
+
+    justify-content: center;
+}
+
+.tt-mobile-header .tt-logo-container {
+    padding: 5px 0 5px;
+}
+  
+  
+  a.tt-logo.tt-logo-alignment img {
+    height: 23px;
+}
+
+div#header_mobile_pro_data {
+    display: none;
+}
+  
+.tt-menu-toggle svg {
+    fill: #191919;
+    width: 25px;
+    height: 25px;
+}
+  
+header .tt-dropdown-obj .tt-dropdown-toggle {
+ 
+    font-size: 22px;
+}
+  
+  
+}
+  
+</style>
+<script>
+  $(document).ready(function() {
+    $('.local-supply-mobile-menu-toggle i').click(function() {
+      $('.local-supply-mobile-menu-toggle i').toggle();
+      $('.local-supply-mobile-menu-row').slideToggle();
+    });
+    $('.local-has-submenu').click(function(e) {
+      e.preventDefault();
+      $('#' + $(this).attr('data-submenu')).slideToggle();
+    });
+  });
+</script>

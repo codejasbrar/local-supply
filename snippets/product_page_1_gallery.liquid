@@ -1,0 +1,285 @@
+{%- assign op_group = false -%}
+{%- assign product_meta_g = product.metafields.productgallery -%}
+{%- if product_meta_g.group != blank -%}
+{%- assign op_group = product_meta_g.group | split: ',' -%}
+{%- endif -%}
+
+{%- case type -%}
+{%- when 'four_images' -%}
+<div class="col-6 hidden-xs four_imge">
+  <div class="product-images-col four-images-js{% if item.stickygallery %} stickprcol-js{% endif %}{% unless item.gallery_no_zoom %} no-zoom{% endunless %}" data-scrollzoom="{{ item.gallery_scroll }}">
+
+	{%- for img in product.images -%}{% if img == product.selected_variant.image %}{% assign start_l = forloop.index0 %}{% break %}{% endif %}{%- endfor -%}
+
+    {%- for image in product.images offset: start_l limit: 4 -%}
+    <div class="item">
+      <img class="zoom-product" src="{{ image.src | product_img_url: '600x' }}" alt="{{ image.alt }}">
+    </div>
+    {%- endfor -%}
+    {%- unless product_meta.video == blank -%}
+    <div class="item">
+      <div data-value="{{ product_meta.video }}" class="video-link-product" data-toggle="modal" data-type="youtube" data-target="#modalVideoProduct">
+        <i class="icon-f-32"></i>
+      </div>
+    </div>
+    {%- endunless -%}
+  </div>
+</div>
+
+{%- when 'vertical' -%}
+<div class="col-6 vert_imge">
+  <div class="tt-product-vertical-layout{% if item.stickygallery %} stickprcol-js{% endif %}">
+    <div class="tt-product-single-img{% unless item.gallery_no_zoom %} no-zoom{% endunless %}" data-scrollzoom="{{ item.gallery_scroll }}"{% if item.show_thumbnails == false or product.images.size == 1 %} style="width: 100%;"{% endif %}>
+      <div>
+        {%- if item.show_thumbnails and product.images.size > 1 and item.show_thumbnails_zoom -%}
+        <button class="tt-btn-zomm tt-top-right tt-btn-zomm-product-page"><i class="icon-f-86"></i></button>
+        {%- endif -%}
+        <img class="zoom-product"
+             src="{{ main_url_image.src | product_img_url: '1024x1024' }}"
+             data-zoom-image="{{ main_url_image | product_img_url: '2048x2048' }}"
+             alt="{{ main_url_image.alt | escape }}" />
+      </div>
+    </div>
+   
+    {%- if item.show_thumbnails and product.images.size > 1 -%}
+    <div class="tt-product-single-carousel-vertical">
+      <ul id="smallGallery" class="ty_slid tt-slick-button-vertical slick-animated-show-js{% if op_group != false %} withfiltres{% endif %}">
+        {%- assign vfilter = '' -%}
+        {%- for image in product.images -%}
+        {%- if op_group != false -%}{%- assign _v = 'filter' | append: op_group[forloop.index0] | replace: ' ', '_' -%}{%- endif -%}
+        <li class="{{ _v }}">
+          <a href="#"{% if forloop.first %} class="zoomGalleryActive"{% endif %} data-image="{{ image.src | product_img_url: '1024x1024' }}" data-zoom-image="{{ image.src | product_img_url: '2048x2048' }}" data-target="{{ image.id }}">
+            <img srcset="{{ image.src | product_img_url: '300x' }}" data-lazy="{{ image.src | product_img_url: 'medium' }}" alt="{{ image.alt }}">
+          </a>
+        </li>
+        {%- if op_group != false -%}{%- assign vfilter = vfilter | replace: _v, ' ' | append: _v | append: ' ' -%}{%- endif -%}
+        {%- endfor -%}
+        {%- assign vfilter = '<li class="' | append: vfilter | append: '">' -%}
+        {% include 'product_page_gallery_video' tagopen:vfilter tagclose:'</li>' %}
+      </ul>
+    </div>
+    {%- endif -%}
+	
+	
+		
+
+  </div>
+   
+
+  
+</div>
+
+{%- when 'mobile' -%}
+<div class="hidden-xs tt-mobile-product-slider mvmobile visible-xs arrow-location-center slick-animated-show-js{% if op_group != false %} withfiltres{% endif %}">
+  {%- assign vfilter = '' -%}
+  {%- for image in product.images %}
+  	{%- if op_group != false -%}{%- assign _v = 'filter' | append: op_group[forloop.index0] | replace: ' ', '_' -%}{%- endif -%}
+  	<div class="{{ _v }}"><img srcset="{{ image.src | product_img_url: '600x' }}" data-lazy="{{ image.src | product_img_url: '1024x1024' }}" alt="{{ image.alt }}"{% if item.gallery_type == 'four_images' %} data-target="{{ image.id }}"{% endif %}></div>
+  	{%- if op_group != false -%}{%- assign vfilter = vfilter | replace: _v, ' ' | append: _v | append: ' ' -%}{%- endif -%}
+  {%- endfor -%}
+
+  {%- unless product_meta.video == blank -%}
+  <div class="{{ vfilter }}">
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item" src="{{ product_meta.video }}" allowfullscreen></iframe>
+    </div>
+  </div>
+  {%- endunless -%}
+</div>
+{%- else -%}
+<div class="col-8  sticky-im px-1 mb-5">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+  <script>
+$(function() {
+    $('.carousel').each(function(){
+        $(this).carousel({
+            interval: false
+        });
+    });
+});
+
+function changeNAVigationImage( imageUrl ){
+	
+	
+var imageUrl = $("."+imageUrl).attr("data-image");
+  
+	console.log(imageUrl);
+ 
+  $('.item.active img').attr("src",imageUrl);
+  
+  
+
+	
+}   
+ 
+    
+</script>
+  
+
+  {% if item.stickygallery %}<div class="stickprcol-js">{% endif %}
+    <div style="display:none;" class="tt-product-single-img{% unless item.gallery_no_zoom %} no-zoom{% endunless %}" data-scrollzoom="{{ item.gallery_scroll }}">
+      <div>
+        {%- if item.show_thumbnails and product.images.size > 1 and item.show_thumbnails_zoom -%}
+        <button class="tt-btn-zomm tt-top-right tt-btn-zomm-product-page"><i class="icon-f-86"></i></button>
+        {%- endif -%}
+        <img class="zoom-product" src="{{ main_url_image.src | product_img_url: '1024x1024' }}" data-zoom-image="{{ main_url_image | product_img_url: '2048x2048' }}" alt="{{ main_url_image.alt | escape }}" />
+      </div>    
+    </div>
+  
+<style>
+
+</style>
+  
+<div id="ProductImagesGallery" class="local-product-gallery">
+  <div class="local-breadcrumb-prd">
+    <a href="/">Home</a>
+    /
+    <span>{{ product.title }}</span>
+  </div>
+  <div class="local-gallery-wrap">
+    {% capture colors %}{% for image in product.images %}{{ image.alt | replace: " ", "-" }}###{% endfor %}{% endcapture %}
+    {% assign clrs = colors | split:'###' | uniq %}
+    {% for color in clrs %}
+    <div class="local-product-image-gallery local-slide-{{ color }} local-hide_product">
+      {% for image in product.images %}
+      {% assign imagealt = image.alt | replace: " ", "-" %}
+      {% if imagealt contains color %}
+      <div class="local-product-images">
+        <img src="{{ image | img_url: 'master' }}" alt="{{ image.alt }}" class="w-100">
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<script>
+// New changes from 10 16 2020 //
+$(document).ready(function() {
+  var currentOPT = $('#local-swatch-current-color').attr('data-alt').replace(/\s+/g, '-');
+  $('.local-slide-' + currentOPT).removeClass('local-hide_product ');
+  $('.local-slide-' + currentOPT).not('.slick-initialized').slick({ dots: true, arrows: true });
+  $('.local-swatch-images img[alt=' + currentOPT + ']').addClass('local-swatch-activated');
+  
+  
+  $('.local-swatch-images img').click(function() {
+    
+    $('.local-swatch-images img').removeClass('local-swatch-activated');
+    $(this).addClass('local-swatch-activated');
+    var CliCKEDSWAtch = $(this).attr('data-varid');
+    var CLiCKEDTitle = $(this).attr('data-vartitle');
+    var CLickEDALT = $(this).attr('alt').replace(/\s+/g, '-');
+    $('#local-swatch-current-color').attr('data-alt', CLickEDALT);
+    $('#local-swatch-current-color').text(CLiCKEDTitle);
+    $('#local-new-input-var').val(CliCKEDSWAtch);
+    $('.local-product-image-gallery').addClass('local-hide_product ');
+    $('.local-slide-' + CLickEDALT).removeClass('local-hide_product ');
+    $('.local-slide-' + CLickEDALT).not('.slick-initialized').slick({ dots: true, arrows: true });
+    setTimeout(getCurrentvariantclass, 500)
+    $('.tt-price .new-price').text($(this).attr('data-price'));
+    $('.tt-price .sale-price').text($(this).attr('data-price'));
+    if($(this).attr('data-compare_at_price')){
+      $('.tt-price .old-price').removeClass('hide');
+      $('.tt-price .old-price').text($(this).attr('data-compare_at_price'));
+    }else{
+      $('.tt-price .old-price').addClass('hide');
+      $('.tt-price .old-price').text('');
+    }
+  });
+});
+</script>
+{% comment %}
+  <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="100000">
+	 
+		  <div class="carousel-inner">
+			
+			{%- for image in product.images -%}
+				{%- if op_group != false -%}{%- assign _v = 'filter' | append: op_group[forloop.index0] | replace: ' ', '_' -%}{%- endif -%}
+				
+			{% if forloop.index == 1 %}
+			
+				<div class="item active">
+				
+					<img src="{{ image.src | product_img_url: 'master' }}" alt="{{ image.alt }}">
+					
+				</div>
+						
+						{% else %}
+						
+				<div class="item dodo">
+				
+					<img src="{{ image.src | product_img_url: 'master' }}"  alt="{{ image.alt }}">
+				
+				</div>
+			
+
+					{% endif %}
+				
+				
+				
+				{%- if op_group != false -%}{%- assign vfilter = vfilter | replace: _v, ' ' | append: _v | append: ' ' -%}{%- endif -%}
+				{%- endfor -%}
+		  
+		  
+		  </div>
+	  
+	  <ol class="carousel-indicators">
+
+
+	  
+	  {%- for image in product.images -%}
+		   
+			
+				
+				<!--<li data-target="#myCarousel" data-slide-to="{{forloop.index}}" class=""></li>--->
+			
+			
+		   
+			{%- endfor -%}
+	 </ol>
+
+
+	  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+		<span class="icon-e-14" style="color:#a0a0a0;font-size: 44px;"></span>
+		<span class="sr-only">Previous</span>
+	  </a>
+	  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+		<span class="icon-e-15" style="color:#a0a0a0;font-size: 44px;"></span>
+		<span class="sr-only">Next</span>
+	  </a>
+	</div>
+  {% endcomment %}
+
+  	
+  
+    {%- if item.show_thumbnails and product.images.size > 1 -%}
+    <div class="product-images-carousel d-none">
+      <ul id="smallGallery" class="smallGalleryclass arrow-location-02 slick-animated-show-js{% if op_group != false %} withfiltres{% endif %}">
+        {%- assign vfilter = '' -%}
+        {%- for image in product.images -%}
+        {%- if op_group != false -%}{%- assign _v = 'filter' | append: op_group[forloop.index0] | replace: ' ', '_' -%}{%- endif -%}
+        
+          <li class="{{ _v }}" onclick="changeNAVigationImage('yoidimage_{{forloop.index}}')">
+         
+            <a href="#"{% if forloop.first %} class="ypp_images yoidimage_{{forloop.index}} zoomGalleryActive" {% else %} class="ypp_images yoidimage_{{forloop.index}}"  {% endif %} data-image="{{ image.src | product_img_url: '1024x1024' }}" data-zoom-image="{{ image.src | product_img_url: '2048x2048' }}" data-target="{{ image.id }}">
+              <img srcset="{{ image.src | product_img_url: '300x' }}" data-lazy="{{ image.src | product_img_url: 'medium' }}" alt="{{ image.alt }}" >
+            </a>
+            
+          </li>
+       
+        {%- if op_group != false -%}{%- assign vfilter = vfilter | replace: _v, ' ' | append: _v | append: ' ' -%}{%- endif -%}
+        {%- endfor -%}
+        {%- assign vfilter = '<li class="' | append: vfilter | append: '">' -%}
+        {% include 'product_page_gallery_video' tagopen:vfilter tagclose:'</li>' %}
+      </ul>
+    </div>
+    {%- endif -%}
+  {% if item.stickygallery %}</div>{% endif %}
+</div>
+{%- endcase -%}
+
+

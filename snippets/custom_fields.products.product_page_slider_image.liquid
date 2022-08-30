@@ -1,0 +1,13 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/localsupplystore.myshopify.com/products/configure/170675/edit
+{% endcomment %}
+{% if product.metafields.custom_fields["product_page_slider_image"] != blank %}
+  <div class="custom-field custom-field__product-page-slider-image custom-field__type--image">
+    <h3 class="custom-field--title">product page slider image</h3>
+    <div class="custom-field--value">  
+      {% include 'cf-image' with image: product.metafields.custom_fields["product_page_slider_image"] %}
+    </div>
+  </div>
+{% endif %}

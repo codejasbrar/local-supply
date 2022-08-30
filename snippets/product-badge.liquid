@@ -1,0 +1,32 @@
+<!-- LOW STOCK -->
+{% assign product_quantity = 0 %}
+
+{% for variant in product.variants %}
+  {% assign product_quantity = product_quantity | plus: variant.inventory_quantity %}
+{% endfor %}
+
+{% assign lowest_variant_quantity = product.first_available_variant.inventory_quantity %}
+{% for variant in product.variants %}
+  {% if variant.available %}
+    {% if variant.inventory_quantity < lowest_variant_quantity %}
+      {% assign lowest_variant_quantity = variant.inventory_quantity %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+<span class="tt-label-location">
+  {%- for tags in product.tags -%}
+  {%- if tags contains 'badge:' -%}
+    <span class="tt-label-best-stock">{{- tags | remove : 'badge:' | replace: '-', ' '  -}}</span> 
+  {%- endif -%}
+  {%- endfor -%}  
+
+  {% if product_quantity ==  0 %}
+    <span></span>
+    {% elsif product_quantity <= settings.lowstock_quantity_trigger or product_quantity ==  1 or lowest_variant_quantity <= settings.lowstock_quantity_trigger %}
+    <span class="tt-label-low-stock">LOW STOCK</span>
+    {% else %}
+  {% endif %}
+</span>
+
+

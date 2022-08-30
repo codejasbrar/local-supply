@@ -1,0 +1,100 @@
+{%- capture html_tabs_nav -%}  
+{%- assign selected = true -%}
+{%- for block in section.blocks -%}
+{%- assign b_i = block.settings -%}
+{%- case block.type -%}
+  {%- when 'tab_desc' -%}
+	<li class="nav-item">
+      <a class="nav-link{% if selected %} show active{% endif %}" data-toggle="tab" href="#tt-tab-0{{ forloop.index }}" role="tab">{{ b_i.title }}</a>
+	</li>
+	{%- assign selected = false -%}
+  {%- when 'tab_same_html' -%}
+	<li class="nav-item">
+      <a class="nav-link{% if fselected %} show active{% endif %}" data-toggle="tab" href="#tt-tab-0{{ forloop.index }}" role="tab">{{ b_i.title }}</a>
+	</li>
+	{%- assign selected = false -%}
+  {%- when 'tab_unique' -%}
+	{%- if product_meta[b_i.key] != blank -%}
+	<li class="nav-item">
+      <a class="nav-link{% if selected %} show active{% endif %}" data-toggle="tab" href="#tt-tab-0{{ forloop.index }}" role="tab">{{ b_i.title }}</a>
+	</li>
+	{%- assign selected = false -%}
+	{%- endif -%}
+  {%- when 'tab_review' -%}
+	<li class="nav-item">
+      <a id="tab_review" class="nav-link{% if selected %} show active{% endif %}" data-toggle="tab" href="#tt-tab-0{{ forloop.index }}" role="tab">{{ b_i.title }}</a>
+	</li>
+	{%- assign selected = false -%}
+{%- endcase -%}
+{%- endfor -%}
+{%- endcapture -%}
+
+{%- capture html_tabs -%}
+{%- assign selected = true -%}
+{%- for block in section.blocks -%}
+{%- assign b_i = block.settings -%}
+{%- case block.type -%}
+  {%- when 'tab_desc' -%}
+	<div class="tab-pane{% if selected %} active fade{% endif %}" id="tt-tab-0{{ forloop.index }}" role="tabpanel">
+       <div class="content product-features">
+      {% if product.metafields.custom_fields["product_features_colelction"] != blank %}
+      	{% assign separator = "|###|" %}
+        {% assign icon_array = product.metafields.custom_fields["icon"] | split: separator %}
+        {% assign label_array = product.metafields.custom_fields["label"] | split: separator %}
+        {% assign fc_keys = product.metafields.custom_fields["product_features_colelction"] | split: "," %}
+        {% for i in fc_keys %}
+          {% assign index = i | plus: 0 %}
+      	  <p>{% if icon_array[index] != blank %}
+        	<span class="icon">{{ icon_array[index] }}</span>{% endif %}{{ label_array[index] }}</p>
+        {% endfor %}
+      {% else %}
+      	{% for i in (1..5) %}
+        {% assign icon = i | prepend: 'icon_' %}
+        {% assign label = i | prepend: 'label_' %}
+        {% if product.metafields.custom_fields[label] != blank %}
+        <p>{% if product.metafields.custom_fields[icon] != blank %}
+          <span class="icon">{{product.metafields.custom_fields[icon]}}</span>{% else %}<span class="icon">-</span>{% endif %}{{product.metafields.custom_fields[label]}}</p>
+        {% endif %}
+        {% endfor %}
+      {% endif %}
+    </div>
+      {{ product.description }}
+	</div>
+	{%- assign selected = false -%}
+  {%- when 'tab_same_html' -%}
+	<div class="tab-pane{% if selected %} active fade{% endif %}" id="tt-tab-0{{ forloop.index }}" role="tabpanel">
+      {{ b_i.html }}
+	</div>
+	{%- assign selected = false -%}
+  {%- when 'tab_unique' -%}
+	{%- if product_meta[b_i.key] != blank -%}
+	<div class="tab-pane{% if selected %} active fade{% endif %}" id="tt-tab-0{{ forloop.index }}" role="tabpanel">
+      {{ product_meta[b_i.key] }}
+	</div>
+	{%- assign selected = false -%}
+	{%- endif -%}
+  {%- when 'tab_review' -%}
+	<div class="tab-pane{% if selected %} active fade{% endif %}" id="tt-tab-0{{ forloop.index }}" role="tabpanel">
+      {%- if settings.selectedreviewaapp == 'alireviewapp' -%}
+      {%- unless item.showalireviewinrow -%}
+      <div id="shopify-ali-review" product-id="{{ product.id }}"> {{ shop.metafields.review_collector.review_code }}</div>
+      {%- endunless -%}
+      {%- else %}
+      {% render 'okendo-reviews-widget', product: product %}
+      {%- endif -%}
+	</div>
+	{%- assign selected = false -%}
+{%- endcase -%}
+{%- endfor -%}
+{%- endcapture -%}
+
+{%- if html_tabs != '' -%}
+<div class="container-indent1 prpage-tabs">
+  <div class="container container-fluid-custom-mobile-padding">
+    <ul class="nav nav-tabs tt-tabs-default tt-tabs-left" role="tablist">
+      {{ html_tabs_nav }}
+    </ul>
+    <div class="tab-content">{{ html_tabs }}</div>
+  </div>
+</div>
+{%- endif -%}

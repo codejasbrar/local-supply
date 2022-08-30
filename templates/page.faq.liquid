@@ -1,0 +1,255 @@
+ <div id="help">
+	<div class="container the-faq-page pb-5">
+        {% if page.handle != 'faq' and page.title != 'Stockists' %}
+      	<div class="page-header cf">
+      		<h1 class="majortitle">{{ page.title }}</h1>
+      	</div>
+        {% endif %}
+		<div class="content">
+          
+          {% if page.title == 'Stockists' %}
+      	<div class="page-header cf">
+      		<h1 class="majortitle othersPage">{{ page.title }}</h1>
+      	</div>
+        {% endif %}
+          
+            {% if page.handle == 'faq' %}
+          <div class="page-header cf">
+            <h1 class="majortitle faq">FAQ</h1>
+          </div>
+          {% endif %}
+          <div class="generic_spacer_30"></div>
+          <div class="faq-content-wrap">    
+            {{ page.content }}
+          </div>
+          <!-- v2.0 add -->
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+</div>
+
+<style>
+  
+  h1.majortitle.othersPage {
+    text-align: left;
+    font-size: 42px!important;
+    font-weight: 600!important;
+}
+  
+  
+  
+  h1.majortitle.faq {
+    text-align: left;
+    font-size: 42px!important;
+    font-weight: 600!important;
+}
+  h1.majortitle {
+    font-weight: 500;
+    font-family: "aktiv-grotesk",sans-serif;
+    font-size: 33px!important;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0;
+  }
+  #help .content {
+    color: #111;
+    margin: 0px auto;
+    font-size: 18px;
+    overflow: hidden;
+    padding: 0 10px;
+    box-sizing: border-box;
+/*     max-width: 1025px; */
+    /* width: 75%; */
+  }
+  .page-header {
+    text-align: center;
+    padding: 0px 0 20px 0;
+  }
+  .faq-section:first-of-type {
+    border-top: 1px solid #afafaf;
+  }
+  .faq-section {
+    border-bottom: 1px solid #afafaf;
+  }
+  #help .the-faq-page .content h3 {
+    font-size: 20.571px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: #000000;
+    cursor: pointer;
+    padding-top: 30px;
+  }
+  #help .content h3 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .faq-section>h3 {
+    margin: 0 !important;
+    padding: 20px;
+    font-size: 1.28571rem !important;
+    position: relative;
+    cursor: pointer;
+    line-height: 1!important;
+  }
+  .faq-section>h3::after {
+    -webkit-transition: all 300ms ease-in-out !important;
+    -moz-transition: all 300ms ease-in-out !important;
+    -ms-transition: all 300ms ease-in-out !important;
+    -o-transition: all 300ms ease-in-out !important;
+    transition: all 300ms ease-in-out !important;
+    position: absolute;
+    content: '+';
+    right: 2%;
+    top: 50%;
+    height: 24px;
+    line-height: 24px;
+    transform: translateY(-12px);
+  }
+  .faq-section .faq-content {
+    -webkit-transition: all 300ms ease-in-out !important;
+    -moz-transition: all 300ms ease-in-out !important;
+    -ms-transition: all 300ms ease-in-out !important;
+    -o-transition: all 300ms ease-in-out !important;
+    transition: all 300ms ease-in-out !important;
+    max-height: 0;
+    overflow: hidden;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  #help .the-faq-page .content h5 {
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: #000000;
+  }
+  #help .the-faq-page .content ul {
+    margin-bottom: 50px;
+  }
+  #help .content ul {
+    line-height: 1.6em;
+    list-style: disc;
+    margin: 0px 0px 20px 0px;
+  }
+  #help .content ul li {
+    padding: 0;
+    margin-left: 18px;
+    font-size: 16px;
+  }
+  #help .the-faq-page .content ul li {
+    list-style: none;
+    margin: 0 0 25px;
+    color: #000000;
+    font-size: 14px !important;
+  }
+  .faq-section.active>h3::after {
+    content: '-';
+  }
+  .faq-section.active .faq-content {
+    max-height: fit-content;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .tt-breadcrumb {
+    display: none;
+  }
+  .faq-content-wrap {
+    margin-bottom: 30px;
+  }
+  #help .content ul {
+    margin: 0px 0px 50px 0px!important;
+    padding: 0!important;
+  }
+  
+  @media (min-width: 1230px){
+.container {
+    max-width: 1046px;
+}
+  }
+  
+/*   kkkk */
+  
+    .accordion {
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            
+            transition: 0.4s;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            color: #000000;
+        }
+        
+        .active,
+        .accordion:hover {
+            background-color: #fff;
+        }
+        
+        .accordion:after {
+            content: '\002B';
+            color: black;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+          font-size:20px;
+        }
+        
+        .active:after {
+            content: "\2212";
+        }
+        
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+          border-bottom: 1px solid black;
+        }
+        
+        .panel ul li {
+            padding: 0;
+            margin-left: 18px;
+            font-size: 16px;
+        }
+        
+        .panel ul {
+            line-height: 1.6em;
+            list-style: disc;
+            margin: 0px 0px 20px 0px;
+        }
+  h3.accordion {
+    line-height: 15px !important;
+}
+</style>
+<script>    
+    $('.faq-section').on('click', function(e) {
+      $($(this)).toggleClass("active"); //you can list several class names 
+      e.preventDefault();
+    });
+</script>
+
+
+<script>
+            var acc = document.getElementsByClassName("accordion");
+            var i;
+
+            for (i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                    if (panel.style.maxHeight) {
+                        panel.style.maxHeight = null;
+                    } else {
+                        panel.style.maxHeight = panel.scrollHeight + "px";
+                    }
+                });
+            }
+        </script>

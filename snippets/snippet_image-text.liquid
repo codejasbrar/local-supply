@@ -1,0 +1,30 @@
+<div class="container clearfix">
+  <div class="v10-image-text clearfix" {{block.shopify_attributes}}>
+    {% assign min = 900 %}
+    {% assign max = 90000 %}
+    {% assign diff = max | minus: min %}
+    {% assign randomNumber = "now" | date: "%N" | modulo: diff | plus: min %}
+
+    <div class="content content-{{ randomNumber }} {{ block.settings.blockLayout }}">
+      <div class="image">
+        <img src="{{ block.settings.image | img_url: '540x' }}" alt="{{ block.settings.heading }}"/>
+      </div>
+      <div class="text-content-wrapper">
+        <div class="text-content">
+          <h3>{{ block.settings.heading }}</h3>
+          {{ block.settings.richtext }}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<style>
+  .content-{{ randomNumber }} .text-content-wrapper{
+    background-color: {{ block.settings.bgColour }};
+  }
+  .content-{{ randomNumber }} .text-content-wrapper .text-content h3,
+  .content-{{ randomNumber }} .text-content-wrapper .text-content p{
+    color: {{ block.settings.txtColour }};
+  }
+</style>

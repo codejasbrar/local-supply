@@ -1,0 +1,123 @@
+<!----
+{%- comment -%}
+  The contents of the blog.liquid template can be found in /sections/blog-template.liquid
+{%- endcomment -%}
+
+{% section 'blog-template' %}
+
+
+--->
+
+{% paginate blog.articles by 18 %}
+
+{% include 'snippet_blog-submenu-bar' %}
+{% comment %}
+{% include 'snippet_journal-featured-blog' %}
+
+{% include 'v7-bloglist-featured-blog' %}
+
+
+<div class="container v3_blog_list_container v7_update">
+    <div class="row">
+        {% for article in blog.articles %}
+        <div class="gr-third one_post">
+            <a class="featimg" href="{{ article.url }}" title="{{ article.title }}">
+                {% if article.image.src != blank %}
+                <img src="{{ article.image.src | img_url: '600x600' }}" alt="{{ article.image.alt }}">
+                {% else %}
+                <img src="//placehold.it/600x600" alt="featured image">
+                {% endif %}
+            </a>
+            
+            <div class="meta-tags">
+              {% for tag in article.tags %}
+                  {% unless tag contains 'meta-' %}
+                      {{ tag | link_to_tag: tag }}
+                  {% endunless %}
+              {% endfor %}
+              &nbsp;
+            </div>
+          
+            <div class="title-wrap">
+              <h3><a href="{{ article.url }}" title="{{ article.title }}">{{ article.title }}</a></h3>
+            </div>
+            
+            <a href="{{ article.url }}" title="{{ article.title }}" class="moretext"><strong>{{ article.author }}</strong> | {{ article.published_at | date: "%d %b %Y" }}</a>
+        </div>
+      
+        {% if forloop.index == 6 %}
+      		{% include 'snippet_journal-topsales-items' %}
+        {% endif %}
+      
+        {% endfor %}
+    </div>
+</div>
+{% endcomment %}
+
+<div class="container pagination-row">{% include 'pagination-control' %}</div>
+
+{% endpaginate %}
+
+
+<style>
+ @media (min-width: 1200px){
+	.blog-contaier.container {
+		max-width: 1046px;
+	}
+}
+section.journal-section-area {
+    padding: 25px 0;
+}
+.section-title h1 {
+    font-size: 50px;
+    margin-bottom: 38px;
+}
+.journal-single-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(350px, 1fr));
+    grid-gap: 20px;
+    margin-bottom: 50px;
+}
+.single-box-bg {
+    background: #eee;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+    position: relative;
+    z-index: 1;
+    height: 500px;
+}
+.journal-main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0px 0;
+}
+.blog-contaier .top h3 {
+    font-size: 36px!important;
+    text-transform: uppercase;
+    font-weight: 600!important;
+}
+.top p {
+    font-size: 22px;
+}
+.readmore-btn {
+    font-size: 24px;
+    color: #000;
+    font-weight: bold;
+    text-decoration: underline;
+}
+  .container.pagination-row {
+    text-align: center;
+    padding-bottom: 30px;
+    font-weight: 600;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+.container.pagination-row a{
+    color: #000;
+}
+.container.pagination-row span.prev {
+    padding-right: 25px;
+}
+</style>

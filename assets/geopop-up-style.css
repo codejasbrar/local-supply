@@ -1,0 +1,86 @@
+.geopopup-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99991;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+.geopopup-wrapper > a {
+    width: 100%;
+    max-width: 563px;
+}
+.geo-popup-container {
+    background: #fff;
+    padding: 70.52px 30px;
+    width: 100%;
+    max-width: 485px;
+}
+.geo-popup-content {
+    text-align: center;
+    color: #000000;
+}
+.geo-popup-content a{
+    color: #000;
+    text-decoration: underline;
+}
+.geo-popup-content h2.geo-popup-heading {
+    font-size: 22px !important;
+    padding: 0 !important;
+}
+.geo-popup-content img {
+    margin-bottom: 35px;
+}
+.geo-popup-content p {
+    margin: 0;
+    font-weight: 700;
+    font-size: 13px;
+    color: #000000;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+.geo-popup-content small{
+    font-weight: 400;
+    text-transform: uppercase;
+}
+.geo-popup-content p strong {
+    font-weight: 700;
+}
+.geo-popup-content .action-btn {
+    display: inline-block;
+    background: #000;
+    color: #88FA50;
+    font-weight: 400;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: 1px solid #000;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 11px;
+    width: 100%;
+    max-width: 283px;
+}
+.geo-popup-content .action-btn:hover {
+    background: #fff;
+    color: #000;
+}
+@media only screen and (max-width: 600px){
+    .geo-popup-container {
+        padding: 89px 30px;
+        max-width: 306px;
+    }
+    .geopopup-wrapper > a {
+        width: 100%;
+        max-width: 306px;
+    }
+}

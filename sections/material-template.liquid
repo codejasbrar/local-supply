@@ -1,0 +1,692 @@
+{% for block in section.blocks %}
+<div class="block about container" {{ block.shopify_attributes }}>
+{% case block.type %}
+{% when 'two-column-6headtitle' %}
+	<section class="local-everywhere-area our-values">
+	  <div class="container">
+		<div class="container-inner our-values-inner">
+		  <div class="left-top-content">
+			<h1>{{ block.settings.mainheading }}</h1>
+		  </div>
+		  <div class="right-bottom-content">
+			<div class="single-content-box">
+			  <h2>{{ block.settings.heading1 }}</h2>
+				{{ block.settings.tileText1 }}
+			</div>
+			<div class="single-content-box">
+			  <h2>{{ block.settings.heading2 }}</h2>
+				{{ block.settings.tileText2 }}
+			</div>
+			<div class="single-content-box">
+			  <h2>{{ block.settings.heading3 }}</h2>
+				{{ block.settings.tileText3 }}
+			</div>
+			<div class="single-content-box">
+			  <h2>{{ block.settings.heading4 }}</h2>
+				{{ block.settings.tileText4 }}
+			</div>
+			<div class="single-content-box">
+			  <h2>{{ block.settings.heading5 }}</h2>
+				{{ block.settings.tileText5 }}
+			</div>
+			<div class="single-content-box">
+			  <h2>{{ block.settings.heading6 }}</h2>
+				{{ block.settings.tileText6 }}
+			</div>
+            {%if block.settings.heading7 != blank %}
+            <div class="single-content-box">
+			  <h2>{{ block.settings.heading7 }}</h2>
+				{{ block.settings.tileText7 }}
+			</div>
+            {%endif%}
+            
+		  </div>
+		</div>
+	  </div>
+	</section>
+{% when 'three-column-card' %}
+	<section class="local-everywhere-area thought-design">
+		<div class="container">
+			<div class="container-inner thought-design-inner">
+				<div class="left-top-content">
+					<h1>{{ block.settings.maincardheading }}</h1>
+				</div>
+				<div class="bottom-content">
+					<div class="single-imgcontent-box col-sm-6 col-md-4">
+						<div class="img-container">
+							<div class="imgmod">
+								<img src="{{ block.settings.cardImage1 | img_url:'260x260' }}">
+							</div>
+							<div class="imghead left-cont">
+								<h2>{{ block.settings.cardHeading1 }}</h2>
+							</div>
+						</div>
+						<div class="contentsec">
+							<p>{{ block.settings.cardRichtext1 }}</p>
+						</div>
+					</div>
+					<div class="single-imgcontent-box col-sm-6 col-md-4 ">
+						<div class="img-container">
+							<div class="imgmod">
+								<img src="{{ block.settings.cardImage2 | img_url:'260x260' }}">
+							</div>
+							<div class="imghead center-cont">
+								<h2>{{ block.settings.cardHeading2 }}</h2>
+							</div>
+						</div>
+						<div class="contentsec">
+							<p>{{ block.settings.cardRichtext2 }}</p>
+						</div>
+					</div>
+					<div class="single-imgcontent-box col-sm-6 col-md-4 ">
+						<div class="img-container">
+							<div class="imgmod">
+								<img src="{{ block.settings.cardImage3 | img_url:'260x260' }}">
+							</div>
+							<div class="imghead right-cont">
+								<h2>{{ block.settings.cardHeading3 }}</h2>
+							</div>
+						</div>
+						<div class="contentsec">
+							<p>{{ block.settings.cardRichtext3 }}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+  {% when 'three-column-video-card' %}
+	<section class="local-everywhere-area thought-design">
+		<div class="container">
+			<div class="container-inner thought-design-inner">
+				<div class="left-top-content">
+					<h1>{{ block.settings.videoCardHeading }}</h1>
+				</div>
+				<div class="bottom-content">
+					<div class="single-imgcontent-box col-sm-6 col-md-4">
+						<div class="img-container">
+							<div class="imgmod">
+                              
+                              <iframe src="{{ block.settings.videoImage1}}?autoplay=1&loop=1&autopause=0&muted=1" width="260" height="260" frameborder="0" allow="autoplay; fullscreen" muted webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+
+
+							</div>
+							<div class="imghead left-cont">
+								<h2>{{ block.settings.videoHeading1 }}</h2>
+							</div>
+						</div>
+						<div class="contentsec">
+							<p>{{ block.settings.videotext1 }}</p>
+						</div>
+					</div>
+					<div class="single-imgcontent-box col-sm-6 col-md-4 ">
+						<div class="img-container">
+							<div class="imgmod">
+                              
+                             <iframe src="{{ block.settings.videoImage2}}?autoplay=1&loop=1&autopause=0&muted=1" width="260" height="260" frameborder="0" allow="autoplay; fullscreen" muted webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+                             
+							</div>
+							<div class="imghead center-cont">
+								<h2>{{ block.settings.videoHeading2 }}</h2>
+							</div>
+						</div>
+						<div class="contentsec">
+							<p>{{ block.settings.videotext2 }}</p>
+						</div>
+					</div>
+					<div class="single-imgcontent-box col-sm-6 col-md-4 ">
+						<div class="img-container">
+							<div class="imgmod">
+                              
+                              <iframe src="{{ block.settings.videoImage3}}?autoplay=1&loop=1&autopause=0&muted=1" width="260" height="260" frameborder="0" allow="autoplay; fullscreen" muted webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+
+							</div>
+							<div class="imghead right-cont">
+								<h2>{{ block.settings.videoHeading3 }}</h2>
+							</div>
+						</div>
+						<div class="contentsec">
+							<p>{{ block.settings.videotext3 }}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+  
+  
+  
+  
+  
+{% endcase %}
+</div>
+{% endfor %}
+{% schema %}
+  {
+  "name": "Material",
+  "blocks": [
+  {
+  "type" : "two-column-text",
+  "name" : "Two Column text",
+  "settings": [
+  {
+  "type": "image_picker",
+  "id":	"tileImage1",
+  "label": "1st Image"
+  },
+  {
+  "type": "text",
+  "id":	"tileText1",
+  "label": "1st Text"
+  },
+  {
+  "type": "url",
+  "id": "tileLinkUrl1",
+  "label": "1st Link Url"
+  },
+  {
+  "type": "image_picker",
+  "id":	"tileImage2",
+  "label": "2nd Image"
+  },
+  {
+  "type": "text",
+  "id":	"tileText2",
+  "label": "2nd Text"
+  },
+  {
+  "type": "url",
+  "id": "tileLinkUrl2",
+  "label": "2nd Link Url"
+  },
+  {
+  "type": "richtext",
+  "id":	"content_richtext",
+  "label": "Content"
+  }
+  ]
+  },
+  {
+  "type" : "text-block",
+  "name" : "Text Block",
+  "settings" : [
+	{
+      "id": "heading",
+      "type": "text",
+      "label": "Heading"
+    },
+  	{
+    "type": "richtext",
+    "id":	"content_richtext",
+    "label": "Content"
+  	}
+  ]
+  },
+  {
+    "type" : "two-column-6headtitle",
+    "name" : "2 Column 6 heading text",
+    "settings" : [
+      {
+        "id": "mainheading",
+        "type": "text",
+        "label": "Main Heading"
+      },
+	  {
+        "id": "heading1",
+        "type": "text",
+        "label": "Heading1"
+      },
+      {
+      "type": "richtext",
+      "id":	"tileText1",
+      "label": "1st Text"
+      },
+		{
+        "id": "heading2",
+        "type": "text",
+        "label": "Heading2"
+      },
+      {
+      "type": "richtext",
+      "id":	"tileText2",
+      "label": "2nd Text"
+      },
+		{
+        "id": "heading3",
+        "type": "text",
+        "label": "Heading3"
+      },
+      {
+      "type": "richtext",
+      "id":	"tileText3",
+      "label": "3rd Text"
+      },
+	  {
+        "id": "heading4",
+        "type": "text",
+        "label": "Heading4"
+      },
+      {
+      "type": "richtext",
+      "id":	"tileText4",
+      "label": "4th Text"
+      },
+		{
+        "id": "heading5",
+        "type": "text",
+        "label": "Heading5"
+      },
+      {
+      "type": "richtext",
+      "id":	"tileText5",
+      "label": "5th Text"
+      },
+	  {
+        "id": "heading6",
+        "type": "text",
+        "label": "Heading6"
+      },
+		{
+      "type": "richtext",
+      "id":	"tileText6",
+      "label": "6th Text"
+      },
+	{
+        "id": "heading7",
+        "type": "text",
+        "label": "Heading7"
+      },
+      {
+      "type": "richtext",
+      "id":	"tileText7",
+      "label": "7th Text"
+      }
+		
+    ]
+  },
+{
+    "type" : "three-column-card",
+    "name" : "3 Column Card",
+    "settings" : [
+	  {
+      "type": "text",
+      "id":	"maincardheading",
+      "label": "Main Headline"
+      },
+      {
+      "type": "image_picker",
+      "id":	"cardImage1",
+      "label": "1st Image"
+      },
+      {
+      "type": "text",
+      "id":	"cardHeading1",
+      "label": "1st Headline"
+      },
+      {
+      "type": "richtext",
+      "id": "cardRichtext1",
+      "label": "1st Text"
+      },
+      {
+      "type": "image_picker",
+      "id":	"cardImage2",
+      "label": "2nd Image"
+      },
+      {
+      "type": "text",
+      "id":	"cardHeading2",
+      "label": "2nd Headline"
+      },
+      {
+      "type": "richtext",
+      "id": "cardRichtext2",
+      "label": "2nd Text"
+      },
+		{
+      "type": "image_picker",
+      "id":	"cardImage3",
+      "label": "3rd Image"
+      },
+      {
+      "type": "text",
+      "id":	"cardHeading3",
+      "label": "3ed Headline"
+      },
+      {
+      "type": "richtext",
+      "id": "cardRichtext3",
+      "label": "3rd Text"
+      }
+    ]
+  },
+
+
+{
+    "type" : "three-column-video-card",
+    "name" : "3 Column Video Card",
+    "settings" : [
+	  {
+      "type": "text",
+      "id":	"videoCardHeading",
+      "label": "Main Headline"
+      },
+      {
+      "type": "video_url",
+      "id":	"videoImage1",
+"accept": ["youtube", "vimeo"],
+      "label": "1st Video"
+      },
+      {
+      "type": "text",
+      "id":	"videoHeading1",
+      "label": "1st Headline"
+      },
+      {
+      "type": "richtext",
+      "id": "videotext1",
+      "label": "1st Text"
+      },
+      {
+      "type": "video_url",
+      "id":	"videoImage2",
+"accept": ["youtube", "vimeo"],
+      "label": "2nd Video"
+      },
+      {
+      "type": "text",
+      "id":	"videoHeading2",
+      "label": "2nd Headline"
+      },
+      {
+      "type": "richtext",
+      "id": "videotext2",
+      "label": "2nd Text"
+      },
+		{
+      "type": "video_url",
+      "id":	"videoImage3",
+"accept": ["youtube", "vimeo"],
+      "label": "3rd video"
+      },
+      {
+      "type": "text",
+      "id":	"videoHeading3",
+      "label": "3ed Headline"
+      },
+      {
+      "type": "richtext",
+      "id": "videotext3",
+      "label": "3rd Text"
+      }
+    ]
+  },
+
+
+
+  {
+  "type" : "two-column-tilecol",
+  "name" : "2 Column title col",
+  "settings" : [
+  	{
+      "id": "heading1",
+      "type": "text",
+      "label": "Heading1"
+    },
+    {
+      "type": "richtext",
+      "id":	"tileText1",
+      "label": "1st Text"
+    },
+    {
+      "id": "heading2",
+      "type": "text",
+      "label": "Heading2"
+    },
+    {
+      "type": "richtext",
+      "id":	"tileText2",
+      "label": "2nd Text"
+    }
+  ]
+  },
+  {
+  "type" : "featured-news",
+  "name" : "Featured News",
+  "settings" : [
+  {
+  "type" : "select",
+  "id" : "blockLayout",
+  "label" : "Layout",
+  "options" : [
+  {"value": "image-right", "label": "Image Right"},
+  {"value": "image-left", "label": "Image Left"}
+  ]
+  },
+  {
+  "type":      "color",
+  "id":        "backgroundColour",
+  "label":     "Background Colour",
+  "default":   "#07287d"
+  },
+  {
+  "type":      "color",
+  "id":        "tagColour",
+  "label":     "Tag Colour",
+  "default":   "#fff"
+  },
+  {
+  "type":      "color",
+  "id":        "titleColour",
+  "label":     "Title Colour",
+  "default":   "#fff"
+  },
+  {
+  "type":      "color",
+  "id":        "moreColour",
+  "label":     "Read More Colour",
+  "default":   "#fff"
+  },
+  {
+  "type" : "article",
+  "id" : "featuredArticle",
+  "label" : "Featured News"
+  },
+  {
+  "type": "text",
+  "id":	"readMoreText",
+  "label": "Read more text",
+  "default": "Read more"
+  }
+  ]
+  },
+	{
+		"name" : "Image + Text",
+		"type" : "image-text",
+		"settings" : [
+			{
+				"id": "image",
+				"type": "image_picker",
+				"label": "Image"
+			},
+			{
+                "id": "heading",
+                "type": "text",
+                "label": "Heading"
+            },
+			{
+                "type": "richtext",
+                "id":	"richtext",
+                "label": "Content"
+  			},
+			{
+                "type":      "color",
+                "id":        "bgColour",
+                "label":     "Background Colour",
+                "default":   "#07287d"
+            },
+			{
+                "type":      "color",
+                "id":        "txtColour",
+                "label":     "Text Colour",
+                "default":   "#fff"
+            }
+		]
+	}
+  ],
+  "settings": []
+  }
+{% endschema %}
+
+<style>
+  #shopify-section-material-template .container-inner.thought-design-inner .single-imgcontent-box .imgmod img {
+    width: 100%;
+}
+  #shopify-section-material-template .single-content-box h2 {
+    font-size: 22px!important;
+    padding-bottom: 0px!important;
+}
+  #shopify-section-material-template .single-content-box p {
+    color: #000;
+}
+  #shopify-section-material-template .left-top-content h1 {
+    padding-bottom: 0px!important;
+}
+div#shopify-section-material-template .block.about.container {
+    max-width: 1046px;
+}
+div#shopify-section-material-template {
+/*     max-width: 1025px; */
+    margin: 0 auto;
+    padding-top: 25px;
+    color: #111;
+  margin-bottom:52px;
+}
+#shopify-section-material-template .right-bottom-content {
+    width: 52%;
+    margin-left: auto;
+}
+#shopify-section-material-template .block.about.container {
+    padding: 0px;
+}
+#shopify-section-material-template .single-content-box p {
+    color: #000;
+}
+#shopify-section-material-template .container-inner.our-values-inner {
+    padding-bottom: 25px;
+}
+  section.local-everywhere-area.thought-design .container {
+    padding: 0px;
+}
+  .container-inner.thought-design-inner .single-imgcontent-box.col-sm-6.col-md-4 {
+    padding: 0px;
+    width: 33%;
+    margin-right: 5px;
+}
+.container-inner.thought-design-inner .bottom-content {
+    display: flex;
+}
+ #shopify-section-material-template .container-inner.thought-design-inner h1 {
+    line-height: 43px!important;
+    font-size: 42px!important;
+    letter-spacing: -1px!important;
+/*     margin-bottom: 25px; */
+}
+  .container-inner.thought-design-inner .single-imgcontent-box .imghead {
+    position: absolute;
+    bottom: 0px;
+}
+.container-inner.thought-design-inner .single-imgcontent-box .imghead h2 {
+    font-size: 26px;
+    color: #fff;
+    line-height: 26px;
+    padding: 0 4px 10px 10px;
+	font-weight: 600;
+	letter-spacing: -1px;
+}
+.container-inner.thought-design-inner .single-imgcontent-box .img-container {
+    position: relative;
+}
+  .container-inner.thought-design-inner .single-imgcontent-box .contentsec p {
+    padding: 0 55px 0 0;
+/*     ahmed */
+    margin-top:-10px;
+    font-size:16px;
+    margin-bottom:10px;
+
+}
+  #shopify-section-material-template .container-inner.our-values-inner .single-content-box p {
+    margin-top: 0px;
+}
+#shopify-section-material-template .container-inner.our-values-inner .single-content-box {
+    padding-bottom: 20px;
+}
+ #shopify-section-material-template .imghead.center-cont {
+    width: 100%;
+}
+#shopify-section-material-template .imghead.center-cont h2 {
+    text-align: center;
+}
+#shopify-section-material-template .imghead.right-cont h2 {
+    text-align: right;
+    padding-right: 10px!important;
+}
+#shopify-section-material-template .imghead.right-cont {
+    width: 100%;
+}
+  @media only screen and (max-width: 425px){
+	div#shopify-section-material-template {
+		padding-top: 10px;
+	}
+	#shopify-section-material-template .right-bottom-content {
+		width: 100%;
+		padding: 20px 10px 0 0px;
+	}
+	#shopify-section-material-template .container-inner.our-values-inner .single-content-box {
+		padding-bottom: 25px;
+	}
+	#shopify-section-material-template .single-content-box h2 {
+		font-size: 16px!important;
+		margin-bottom: 8px;
+	}
+	section.local-everywhere-area.thought-design {
+		padding: 0px 16px!important;
+		display: block;
+	}
+	#shopify-section-material-template .container-inner.thought-design-inner h1 {
+		font-size: 35px!important;
+      margin-left:0px !important;
+	}
+	#shopify-section-material-template .container-inner.thought-design-inner .bottom-content {
+		display: contents;
+		width: 100%;
+		float: left;
+	}
+	#shopify-section-material-template .container-inner.thought-design-inner .single-imgcontent-box.col-sm-6.col-md-4 {
+		padding: 0px;
+		width: 100%;
+		margin-right: 5px;
+		margin-top: 25px!important;
+	}
+	#shopify-section-material-template .container-inner.thought-design-inner .single-imgcontent-box .contentsec p {
+		padding: 0 0px 0 0;
+	}
+	#shopify-section-material-template .container-inner.thought-design-inner .single-imgcontent-box .img-container img {
+		width: 100%;
+	}
+    #shopify-section-material-template .left-top-content h1 {
+      font-size: 34px;
+      font-weight: bold;
+      margin-left: 0px !important;
+	}
+}
+  
+  
+  h1:not(.tt-title-subpages):not([class^="tt-title"]):not([class^="tt-collapse"]):not([class^="tt-aside"]) {
+    
+    margin-left: 0px;
+}
+</style>

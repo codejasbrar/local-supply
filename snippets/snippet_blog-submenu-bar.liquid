@@ -1,0 +1,130 @@
+<style>
+  .journal-header{
+  	text-align: center;
+    padding: 70px 0 50px;
+  }
+  .journal-header h1{
+  	margin-bottom: 20px;
+    font-weight: 500;
+    font-size: 40px;
+    text-transform: uppercase;
+  }
+  .journal-header .menuitems ul{
+  	margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .journal-header .menuitems ul li{
+  	display: inline-block;
+    padding: 10px 15px;
+  }
+  .journal-header .menuitems ul li form{
+  	display: none;
+  }
+  .journal-header .menuitems ul li a{
+  	color: #073642;
+    display: block;
+    border-bottom: 1px solid transparent;
+  }
+  .journal-header .menuitems ul li a:hover,
+  .journal-header .menuitems ul li a.active{
+  	border-bottom: 1px solid #07287d;
+    color: #07287d;
+  }
+  @media (max-width: 767px){
+  	.journal-header{
+      padding: 50px 0;
+    }
+    .journal-header h1{
+      font-size: 32px;
+      margin-bottom: 5px;
+    }
+  }
+</style>
+{% assign current_url = canonical_url | remove: 'https://www.localsupply.com' %}
+<section class="journal-section-area">
+  <div class="blog-contaier container">
+    <div class="section-title mb-3">
+      <h1>JOURNAL</h1>
+    </div>
+        <div class="journal-section-inner">
+          {% include 'blog-list-journal' %}
+{% comment %}
+    <div class="menuitems">
+      <ul>
+        {% for link in linklists.journal-menu.links %}
+          <li><a href="{{ link.url }}" class="{% if current_url == link.url %}active{% endif %}">{{ link.title }}</a></li>
+        {% endfor %}
+        <li class="search-menu-item">
+          <a href="#">Search</a>
+          <form method="get" action="/search">
+            <input class="searchBox field" type="text" name="q"{% if search.performed %} value="{{ search.terms | escape | downcase }}"{% endif %} /> 
+            <input type="hidden" name="type" value="article" />
+            <input class="searchSubmit" type="submit" value="Search" class="submit" />
+          </form>
+        </li>
+        
+      </ul>
+    </div>
+    {% endcomment %}
+  </div>
+     </div>
+</section>
+
+<script>
+(function ($) {
+  console.log({{ canonical_url | json }});
+  $(document).ready(function(){
+    
+    /*
+    var resizeID = 0;
+    
+    submennubar_set_pos();
+    $(window).scroll(function(){
+      submennubar_set_pos();
+    }).resize(function(){
+      clearTimeout(resizeID);
+      resizeID = setTimeout(function(){
+        submennubar_set_pos();
+        $('li.search-menu-item ul').removeAttr('style');
+        $('.v7-bloglist-submenu-bar .menuitems').removeAttr('style');
+        $('.mobile-submenu-toggle').removeClass('active');
+      }, 250);
+    });
+    
+    $('.mobile-submenu-toggle').click(function(e){
+      e.preventDefault();
+      
+      $('.v7-bloglist-submenu-bar .menuitems').slideToggle(200, function(){
+        if($('.v7-bloglist-submenu-bar .menuitems').css('display')=='block'){
+          $('.mobile-submenu-toggle').addClass('active');
+        }else{
+          $('.mobile-submenu-toggle').removeClass('active');
+        }
+      });
+    });
+    
+    $('li.search-menu-item > a').click(function(){
+      $(this).parent().find('ul').slideToggle(200);
+    });
+    */
+  });
+  
+  /*
+  function submennubar_set_pos(){
+    var winW  = $(window).width();
+    var sctop = $(window).scrollTop();
+    var moff  = $('.v7-bloglist-submenu-bar-substitute').offset();
+    var mH    = $('.v7-bloglist-submenu-bar').outerHeight();
+
+    if(sctop >= (moff.top-60) && winW>=768){
+      $('.v7-bloglist-submenu-bar').addClass('fixed');
+      $('.v7-bloglist-submenu-bar-substitute').css('height',mH+'px');
+    }else{
+      $('.v7-bloglist-submenu-bar').removeClass('fixed');
+      $('.v7-bloglist-submenu-bar-substitute').css('height',0);
+    }
+  }
+  */
+})(jQuery);
+</script>

@@ -1,0 +1,13 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/localsupplystore.myshopify.com/products/configure/30873/edit
+{% endcomment %}
+{% if product.metafields.custom_fields["icon_3"] != blank %}
+  <div class="custom-field custom-field__icon-3 custom-field__type--image">
+    <h3 class="custom-field--title">Icon 3</h3>
+    <div class="custom-field--value">  
+      {% include 'cf-image' with image: product.metafields.custom_fields["icon_3"] %}
+    </div>
+  </div>
+{% endif %}

@@ -1,0 +1,30 @@
+{% layout none %}
+{%- assign handles = current_tags | first | split: '||' -%}
+
+<div class="tt-carousel-products row arrow-location-right-top tt-alignment-img tt-layout-product-item tt-recently-products-js">
+  {%- for handle in handles -%}
+  {%- assign product = all_products[handle] -%}
+  
+  {% if product.variants.first.inventory_management == "shopify" and product.variants.first.inventory_quantity > 0 %}
+    <div class="col-4 col-md-4 col-lg-4">
+  {%- include 'recently-product-grid-item' -%}</div>
+  
+  {% else %}
+  
+{% endif %}
+
+
+  {%- endfor -%}
+</div>
+
+
+
+<style>
+@media (max-width: 575px){
+  .tt-layout-product-item .tt-product,
+  .tt-layout-product-item .tt-product-design02,
+  .tt-layout-product-item .tt-collection-item{
+    margin-top: 0px;
+  }
+}
+</style>

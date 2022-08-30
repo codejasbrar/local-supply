@@ -1,0 +1,130 @@
+
+
+
+.underline {
+    text-decoration: underline;
+}
+.mobile_only{
+  display: none;
+}
+.cooolBox .tt-product .tt-image-box .tt-label-location {
+    display: none;
+}
+.left_image_inner img,.right_image_inner img {
+    width: 100%;
+}
+.shop_now:after {
+    content: '\f061';
+    font-family: 'Font Awesome 5 Free';
+    margin-left: 5px;
+}
+.left_image_content2 span.shop_now {
+    font-size: 21px;
+    letter-spacing: normal;
+}
+.shop_now {
+    font-size: 21px;
+    letter-spacing: normal;
+}
+.left_image_content2 span {
+    background: #61d836;
+    padding: 0px 5px;
+    margin: 0;
+    font-size: 35px;
+    line-height: initial;
+    font-weight: bold;
+    color: #000;
+    letter-spacing: normal;
+}
+.left_image_content2 {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+.tt-promo-fullwidth .col-md-6.img{
+    float: left;
+}
+.left_image_content {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    color: #fff;
+}
+div.geopopup-wrapper {
+    display: none;
+}
+
+h3.pro-1 {
+      font-size: 12px!important;
+}
+
+.desctop-menu-large .topAccordian .headerpro_text h3 {
+  font-weight: 400!important;
+  text-align: center!important;
+  line-height: 12px;
+}
+
+.tt-top-panel .tt-description {
+  line-height: 16px!important;
+  padding-top: 7px;
+  padding-bottom: 10px;
+}
+
+.topAccordian {
+    position: absolute;
+    z-index: 9;
+    padding: 30px 0 !important;
+    border-top: 1px solid;
+}
+
+.topAccordian .floLEft {
+  max-width: 100% !important;
+}
+  
+
+.section15826229408432 {
+  margin-top: 20px!important;
+}
+
+.hyperbeastslider {
+  margin-bottom: 100px;
+}
+
+.tt-top-panel .tt-row {
+  padding: 24px 7px 4px;
+}
+
+
+@media only screen and (max-width:768px){
+  div.hyperbeastslider {
+    margin: 10px 0 50px 0;
+}
+  button.tt-btn-open {
+    position: absolute;
+    right: 0;
+  }
+  .tt-top-panel div.tt-row {
+    align-items: center;
+  }
+  div#descmob{
+    font-size: 13px!important;
+  }
+  div.tt-footer-col.tt-color-scheme-03.tt-top-border {
+    padding-bottom: 0!important;
+}
+  .left_image_content {
+    font-size: 12px;
+  }
+ div .left_image_content2 span.shop_now, .shop_now {
+    font-size: 15px;
+  }
+  div .left_image_content2 span {
+    font-size: 25px;
+  }
+.desktop_only{
+  display: none;
+}
+div .mobile_only{
+  display: block;
+}
+}

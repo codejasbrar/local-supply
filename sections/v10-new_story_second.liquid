@@ -1,0 +1,391 @@
+{% include 'v10-newstoryblock' %}
+<style>
+  .local-everywhere-area {
+    padding: 0px;
+}
+.container-inner {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(350px, 1fr));
+}
+.left-top-content h1 {
+    font-size: 50px;
+}
+.right-bottom-content {
+    margin-top: 180px;
+}
+.everywhere .right-bottom-content p {
+    text-align: right;
+    font-size: 20px;
+    margin-bottom: 24px;
+}
+.center-text {
+    margin-left: 291px !important;
+    margin-top: 50px;
+}
+.single-content-box {
+    margin-bottom: 30px;
+}
+.single-content-box p {
+    font-size: 20px;
+    color: #000;
+    margin-top: 0px;
+}
+  .single-content-box h2 {
+    padding-bottom: 0px!important;
+        font-size: 25px!important;
+}
+  .left-founder-area p {
+    font-size: 20px;
+}
+  .left-founder-area.right-founder h1 {
+    font-size: 40px;
+}
+  
+  @media(max-width:1030px){
+  
+
+  h1.about-header{
+  font-size:33px !important;
+  }
+  }
+  
+  </style>
+{% schema %}
+  {
+  "name": "Story2 New Page Content",
+  "blocks": [
+  {
+  "type" : "two-column-text",
+  "name" : "Two Column text",
+  "settings": [
+  {
+  "type": "image_picker",
+  "id":	"tileImage1",
+  "label": "1st Image"
+  },
+  {
+  "type": "text",
+  "id":	"tileText1",
+  "label": "1st Text"
+  },
+  {
+  "type": "url",
+  "id": "tileLinkUrl1",
+  "label": "1st Link Url"
+  },
+  {
+  "type": "image_picker",
+  "id":	"tileImage2",
+  "label": "2nd Image"
+  },
+  {
+  "type": "text",
+  "id":	"tileText2",
+  "label": "2nd Text"
+  },
+  {
+  "type": "url",
+  "id": "tileLinkUrl2",
+  "label": "2nd Link Url"
+  },
+  {
+  "type": "richtext",
+  "id":	"content_richtext",
+  "label": "Content"
+  }
+  ]
+  },
+  {
+  "type" : "text-block",
+  "name" : "Text Block",
+  "settings" : [
+	{
+      "id": "heading",
+      "type": "text",
+      "label": "Heading"
+    },
+  	{
+    "type": "richtext",
+    "id":	"content_richtext",
+    "label": "Content"
+  	}
+  ]
+  },
+  {
+    "type" : "two-column-5headtitle",
+    "name" : "2 Column 5 heading text",
+    "settings" : [
+
+	{
+
+		"id": "main_image",
+        "type": "image_picker",
+        "label": "Select Gig or Image"
+	},
+
+      {
+        "id": "mainheading",
+        "type": "text",
+        "label": "Main Heading"
+      },
+	  {
+        "id": "heading1",
+        "type": "text",
+        "label": "Heading1"
+      },
+      {
+      "type": "richtext",
+      "id":	"tileText1",
+      "label": "1st Text"
+      },
+		{
+        "id": "heading2",
+        "type": "text",
+        "label": "Heading2"
+      },
+      {
+      "type": "richtext",
+      "id":	"tileText2",
+      "label": "2nd Text"
+      },
+		{
+        "id": "heading3",
+        "type": "text",
+        "label": "Heading3"
+      },
+      {
+      "type": "richtext",
+      "id":	"tileText3",
+      "label": "3rd Text"
+      },
+	  {
+        "id": "heading4",
+        "type": "text",
+        "label": "Heading4"
+      },
+      {
+      "type": "richtext",
+      "id":	"tileText4",
+      "label": "4th Text"
+      },
+		{
+        "id": "heading5",
+        "type": "text",
+        "label": "Heading5"
+      },
+      {
+      "type": "richtext",
+      "id":	"tileText5",
+      "label": "5th Text"
+      }
+    ]
+  },
+{
+    "type" : "three-column-card",
+    "name" : "3 Column Card",
+    "settings" : [
+      {
+      "type": "image_picker",
+      "id":	"cardImage1",
+      "label": "1st Image"
+      },
+      {
+      "type": "text",
+      "id":	"cardHeading1",
+      "label": "1st Headline"
+      },
+      {
+      "type": "richtext",
+      "id": "cardRichtext1",
+      "label": "1st Text"
+      },
+      {
+      "type": "image_picker",
+      "id":	"cardImage2",
+      "label": "2nd Image"
+      },
+      {
+      "type": "text",
+      "id":	"cardHeading2",
+      "label": "2nd Headline"
+      },
+      {
+      "type": "richtext",
+      "id": "cardRichtext2",
+      "label": "2nd Text"
+      },
+		{
+      "type": "image_picker",
+      "id":	"cardImage3",
+      "label": "3rd Image"
+      },
+      {
+      "type": "text",
+      "id":	"cardHeading3",
+      "label": "3ed Headline"
+      },
+      {
+      "type": "richtext",
+      "id": "cardRichtext3",
+      "label": "3rd Text"
+      }
+    ]
+  },
+  {
+  "type" : "two-column-tilecol",
+  "name" : "2 Column title col",
+  "settings" : [
+
+  	{
+      "id": "heading1",
+      "type": "text",
+      "label": "Heading1"
+    },
+    {
+      "type": "richtext",
+      "id":	"tileText1",
+      "label": "1st Text"
+    },
+
+    {
+      "id": "heading2",
+      "type": "text",
+      "label": "Heading2"
+    },
+    {
+      "type": "richtext",
+      "id":	"tileText2",
+      "label": "2nd Text"
+    }
+  ]
+  },
+{
+  "type" : "two-column-and-image",
+  "name" : "2 Column About Image",
+  "settings" : [
+{
+      "type": "image_picker",
+      "id":	"founderImage",
+      "label": "Founder"
+      },
+  	{
+      "id": "headingFounder",
+      "type": "text",
+      "label": "Heading1"
+    },
+    {
+      "type": "richtext",
+      "id":	"textFounder",
+      "label": "1st Text"
+    },
+{
+      "type": "image_picker",
+      "id":	"directorImage",
+      "label": "Director"
+      },
+    {
+      "id": "headingDirector",
+      "type": "text",
+      "label": "Heading2"
+    },
+    {
+      "type": "richtext",
+      "id":	"textDirector",
+      "label": "2nd Text"
+    }
+  ]
+  },
+
+  {
+  "type" : "featured-news",
+  "name" : "Featured News",
+  "settings" : [
+  {
+  "type" : "select",
+  "id" : "blockLayout",
+  "label" : "Layout",
+  "options" : [
+  {"value": "image-right", "label": "Image Right"},
+  {"value": "image-left", "label": "Image Left"}
+  ]
+  },
+  {
+  "type":      "color",
+  "id":        "backgroundColour",
+  "label":     "Background Colour",
+  "default":   "#07287d"
+  },
+  {
+  "type":      "color",
+  "id":        "tagColour",
+  "label":     "Tag Colour",
+  "default":   "#fff"
+  },
+  {
+  "type":      "color",
+  "id":        "titleColour",
+  "label":     "Title Colour",
+  "default":   "#fff"
+  },
+  {
+  "type":      "color",
+  "id":        "moreColour",
+  "label":     "Read More Colour",
+  "default":   "#fff"
+  },
+  {
+  "type" : "article",
+  "id" : "featuredArticle",
+  "label" : "Featured News"
+  },
+  {
+  "type": "text",
+  "id":	"readMoreText",
+  "label": "Read more text",
+  "default": "Read more"
+  }
+  ]
+  },
+	{
+		"name" : "Image + Text",
+		"type" : "image-text",
+		"settings" : [
+			{
+				"id": "image",
+				"type": "image_picker",
+				"label": "Image"
+			},
+			{
+                "id": "heading",
+                "type": "text",
+                "label": "Heading"
+            },
+			{
+                "type": "richtext",
+                "id":	"richtext",
+                "label": "Content"
+  			},
+			{
+                "type":      "color",
+                "id":        "bgColour",
+                "label":     "Background Colour",
+                "default":   "#07287d"
+            },
+			{
+                "type":      "color",
+                "id":        "txtColour",
+                "label":     "Text Colour",
+                "default":   "#fff"
+            }
+		]
+	}
+  ],
+  "settings": []
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

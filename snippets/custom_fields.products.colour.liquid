@@ -1,0 +1,31 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/localsupplystore.myshopify.com/products/configure/71028/edit
+{% endcomment %}
+{% if product.metafields.custom_fields["colour"] != blank %}
+  <div class="custom-field custom-field__colour custom-field__type--field-collection">
+    <h3 class="custom-field--title">Colour</h3>
+    <div class="custom-field--value">
+      {% assign separator = "|###|" %}
+      {% assign swatch_colour_array = product.metafields.custom_fields["swatch_colour"] | split: separator %}
+      {% assign swatch_text_array = product.metafields.custom_fields["swatch_text"] | split: separator %}
+      {% assign product_array = product.metafields.custom_fields["product"] | split: separator %}
+      {% assign fc_keys = product.metafields.custom_fields["colour"] | split: "," %}
+      {% for i in fc_keys %}
+        {% assign index = i | plus: 0 %}
+        <div class="fc-item fc-item-- fc-index--{{ index }}">
+          <div class="fc-field field__swatch-colour">
+            {{ swatch_colour_array[index] }}
+          </div>
+          <div class="fc-field field__swatch-text">
+            {{ swatch_text_array[index] }}
+          </div>
+          <div class="fc-field field__product">
+            {{ product_array[index] }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}

@@ -1,0 +1,41 @@
+{% layout none %}
+
+{%- for product in collection.products limit:collection_limit -%}
+{%- assign product_meta = product.metafields.description -%}
+{%- comment -%} Price to show. {%- endcomment -%}
+{%- assign sale_on = false -%}
+{%- assign shownewicon = false -%}
+{%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
+{%- assign sale_on = true -%}
+{%- endif -%}
+{%- comment -%} Main Image URL. {%- endcomment -%}
+{%- assign main_url_image = product.featured_image -%}
+{%- assign hover_url_image = "" -%}
+{%- if product.images[1] -%}{%- if product.images[1].src contains "hover" or product_meta.hover == 'true' -%}
+{%- assign hover_url_image = product.images[1].src -%}
+{%- assign hover_url_image_alt = product.images[1].alt -%}
+{%- endif -%}{%- endif -%}
+<div class="col-item {{ product.handle }}">
+  <a href="{{ product.url | within: collection }}" class="tt-product">
+    <div class="tt-image-box">
+      <span class="tt-img">
+        <img src="{{ main_url_image | product_img_url: "grande" }}"
+             alt="{{ product.featured_image.alt | escape }}"/>
+      </span>
+      {%- if hover_url_image != '' -%}<span class="tt-img-roll-over"><img src="{{ hover_url_image | product_img_url: "grande" }}" alt="{{ hover_url_image_alt }}"></span>{%- endif -%}
+
+      {% include 'product-badge' %}
+    </div>
+    <div class="tt-description">
+      <h2 class="tt-title">{{ product.title }}</h2>
+      <div class="tt-price">
+        {%- if sale_on -%}
+        <div class="tt-price"><span class="new-price">{{ product.selected_or_first_available_variant.price | money }}</span><span class="currency-code">{{ cart.currency.iso_code }}</span><span class="old-price">{{ product.selected_or_first_available_variant.compare_at_price | money }}</span><span class="currency-code">{{ cart.currency.iso_code }}</span></div>
+        {%- else -%}
+        <div class="tt-price">{{ product.selected_or_first_available_variant.price | money }}</div>
+        {%- endif -%}
+      </div>
+    </div>
+  </a>
+</div>
+{%- endfor -%}
